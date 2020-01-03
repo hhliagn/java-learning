@@ -7,7 +7,7 @@ public class Factories {
         service.method2();
     }
     public static void main(String[] args) {
-        service_consume(new Impl1Fact());
-        service_consume(new Impl2Fact());
+        service_consume(Impl1.serviceFactory());
+        service_consume(Impl2.serviceFactory());
     }
 }

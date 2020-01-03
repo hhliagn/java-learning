@@ -10,4 +10,13 @@ public class Impl2 implements Service {
     public void method2() {
         System.out.println("impl2 method2");
     }
+
+    public static ServiceFactory serviceFactory(){
+        return new ServiceFactory() {
+            @Override
+            public Service getService() {
+                return new Impl2();
+            }
+        };
+    }
 }
