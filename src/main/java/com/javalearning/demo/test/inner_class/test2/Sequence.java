@@ -11,8 +11,11 @@ public class Sequence {
             items[next ++] = x;
         }
     }
-    public Selector selector(){
+    public Selector selectiveSelecor(){
         return new SelectiveSelecor();
+    }
+    public Selector reverseSelector(){
+        return new ReverseSelector();
     }
     private class SelectiveSelecor implements Selector{
 
@@ -31,6 +34,26 @@ public class Sequence {
         @Override
         public void next() {
             if (i < items.length) i++;
+        }
+    }
+
+    private class ReverseSelector implements Selector{
+
+        private int i = items.length - 1;
+
+        @Override
+        public boolean end() {
+            return i == 0;
+        }
+
+        @Override
+        public Object current() {
+            return items[i];
+        }
+
+        @Override
+        public void next() {
+            if (i > 0) i--;
         }
     }
 }
