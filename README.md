@@ -144,4 +144,37 @@ Actor的例子中，通过继承得到了两个不同的类，用于表达act()�
 4. 要打印toString()内容: 数组必须使用Arrays.toList()，但是打印容器不用额外做处理 (容器提供的toString())。
 5. Queue 队列，只允许从容器的一端插入对象，从另外一端移除对象
 6. Set 是最快的获取元素的方式，存储的顺序往往是无序的。TreeSet 按照比较结果的升序保存对象，LinkedHashSet根据被添加的顺序保存对象(Map也一样)。Set 不会保存重复的元素。
-7. 
+7. List:以特定序列保存元素。一般有两种：ArrayList-随机访问效率高，在中间插入或删除效率低。LinkedList-在中间插入或删除效率高，随机访问效率低。
+8. List 的remove()不能通过创建一个和容器中想要删除元素同类型的对象，再通过这个对象删除容器中同类型的元素。且调用indexOf 会返回-1。
+   所产生的行为与equals()有关。如果为true, 那么将成功删除，并且返回正确的第一个索引。
+9. add(index, pojo) 会在索引=3的位置，也就是第四个位置插入该元素，并且把之前3位置及其之后的元素往后移一格。addAll(index, List) 也是同样的道理。
+10. subList(start, end) 会在start开始，在end-1处停止
+11. Collections.shuffle(list, random) 根据源随机打乱一个列表
+12. List.retainAll(new list) 只保留new list中包含的元素，而且如果源列表有多个，也只会保留一个。所产生的行为与equals()有关。
+13. removeAll(list) 只会删除特定的元素，如果元素是相同类型的，只会删除一个。所产生的行为与equals()有关。
+14. List 转数组：List.toArray(new Pet[0]) 加上new Pet[0]可以转为指定类型的数组，否则默认是Object[]
+15. set(index, pojo) 在该索引位置，用该pojo替换原来的pojo
+16. isEmpty 和 clear: 判断为空以及清除列表元素
+17. Iterator 迭代器，它的作用是遍历并选择序列中的对象。能够将遍历序列和序列底层的结构分离，可以说迭代器统一了对容器的访问方式。
+18. Iterator 可以移除next()产生的最后一个元素，这意味着remove()之前必须先调用next()
+19. listIterator() 可以用来返回一个带有索引的迭代器，这个迭代器是Iterator的子类，它可以获得前一个和后一个的索引。
+20. 使用listIterator() 获取倒序列表，需要先遍历一遍并完整调用next(),使cursor移动到最后的位置，然后通过listIterator.previous()按顺序从后到前获取元素。
+    https://www.cnblogs.com/TianyuSu/p/9467081.html
+21. listIterator(n) 获取一个从指定索引处开始迭代的迭代器。
+22. listIterator.set(pojo) 调用next() 或 previous() 后设置获得的最后一个元素为新的对象  
+23. LinkedList: 
+    不移除元素：getFirst(异常) = peek(null)、getLast(异常)；
+    移除元素：remove(异常) = removeFirst(异常) = poll(null)、removeLast(异常) ；
+    添加元素：add = addLast = offer、addFirst
+    判空：isEmpty()
+24. 栈：后进先出，在头部添加，在头部移除。可以直接用linkedList实现。栈在编程语言中常常用来对表达式求值。
+25. Set: HashSet 使用了散列，LinkedHashSet 使用了散列，另外使用了链表来维护元素的插入顺序， TreeSet 使用了红黑树的数据结构
+26. 队列：先进先出，从一端添加元素（尾部），从另一端取出（头部）。可以直接用linkedList实现。linkedList实现了Queue接口，所以可以向上转型为Queue。
+27. PriorityQueue: 优先队列，通过制定优先级顺序，使队列根据该优先级顺序弹出元素。使用到了Comparator。
+28. 生成Iterator是将队列和消费队列的方法连接在一起耦合度最小的方式，并且与实现Collection相比，它在序列类上所施加的约束也少很多。
+    因为如果继承AbstractCollection就不能继承别的类了。
+29. 任何实现Iterable接口的类，都可以使用foreach遍历。
+30. 尝试把数组传给一个Iterable引用是不可行的，这说明不存在任何的从数组到Iterable的自动转换，必须先手动执行转换为Collection。
+31. Arrays.asList() 产生的List对象会使用底层数组作为其物理实现，只要你执行的操作都会修改这个数组。
+    如果不想数组元素被改变，应该创建一个副本，比如把产生的对象传递给一个Collection的构造器。
+32. 
