@@ -215,3 +215,11 @@ Actor的例子中，通过继承得到了两个不同的类，用于表达act()�
 7. String.format() 可以快速格式化一个对象，并且也是基于 Formatter实现。
 8. Pattern 类 和 Matchers 类，及其几种匹配方法。group 方法返回已匹配的部分。
 9. 
+
+
+###day12
+1. Class<?> 代表了你选择了定义为不确定的版本。这时候可以是int.class,可以是double.class
+2. Class<? extend Number> 可以限定这个类为某种类型或该类型的任何子类型。
+3. 如果将泛型应用于class 对象，那么newInstance的时候会得到一个确定的类型，而不是Object
+4. 在获取超类的时候，即使知道超类的确切类型，也只能通过Class<? super yourclass> 来接，并且只能产生Object对象。
+5. 
