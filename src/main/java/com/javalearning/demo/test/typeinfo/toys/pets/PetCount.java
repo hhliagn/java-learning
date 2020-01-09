@@ -1,5 +1,7 @@
 package com.javalearning.demo.test.typeinfo.toys.pets;
 
+import com.javalearning.demo.test.typeinfo.toys.pets.creator.ForNameCreator;
+
 import java.util.HashMap;
 
 public class PetCount {
@@ -19,9 +21,45 @@ public class PetCount {
             if (pet instanceof Pet){
                 petCounter.count(pet.getClass().getSimpleName());
             }
-            //...
+            if (pet instanceof Dog){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Mutt){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Pug){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Cat){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof EgyptianMau){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Manx){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Cymric){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Rodent){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Rat){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Mouse){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
+            if (pet instanceof Hamster){
+                petCounter.count(pet.getClass().getSimpleName());
+            }
         }
         System.out.println(petCounter);
+    }
+
+    public static void main(String[] args) {
+        countPets(new ForNameCreator());
     }
 }
 
