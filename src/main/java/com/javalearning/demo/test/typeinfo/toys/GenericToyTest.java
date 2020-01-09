@@ -1,4 +1,6 @@
-package com.javalearning.demo.test.typeinfo.toysss;
+package com.javalearning.demo.test.typeinfo.toys;
+
+import com.javalearning.demo.test.typeinfo.toys.FancyToy;
 
 public class GenericToyTest {
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {

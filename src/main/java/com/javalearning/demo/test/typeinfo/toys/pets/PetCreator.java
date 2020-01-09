@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.typeinfo.toysss.pets;
+package com.javalearning.demo.test.typeinfo.toys.pets;
 
 import java.util.ArrayList;
 import java.util.Collections;
