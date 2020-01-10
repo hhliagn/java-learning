@@ -11,7 +11,7 @@ public class ClassInitialization {
         System.out.println(Initable.staticFinal);
         System.out.println(Initable.staticFinal2);
 
-//        Class<?> aClass = Class.forName("com.javalearning.demo.test.typeinfo.classInitialization.Initable2");
+//        Class<?> aClass = Class.forName("com.javalearning.demo.Test.typeinfo.classInitialization.Initable2");
 //        System.out.println("after Initable2 init");
         System.out.println(Initable2.staticNonFinal);
 

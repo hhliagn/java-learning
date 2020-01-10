@@ -13,14 +13,14 @@ public class ForNameCreator extends PetCreator {
         return types;
     }
     private static String[] typeNames = {
-            "com.javalearning.demo.test.typeinfo.toys.pets.Mutt",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Pug",
-            "com.javalearning.demo.test.typeinfo.toys.pets.EgyptianMau",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Manx",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Cymric",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Rat",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Mouse",
-            "com.javalearning.demo.test.typeinfo.toys.pets.Hamster"
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Mutt",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Pug",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.EgyptianMau",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Manx",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Cymric",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Rat",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Mouse",
+            "com.javalearning.demo.Test.typeinfo.toys.pets.Hamster"
     };
     @SuppressWarnings("unchecked")
     public static void loader(){
