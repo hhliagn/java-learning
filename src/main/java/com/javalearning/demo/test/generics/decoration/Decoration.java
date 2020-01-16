@@ -1,6 +1,5 @@
-package com.javalearning.demo.test.generics.decorator;
+package com.javalearning.demo.test.generics.decoration;
 
-import java.sql.Time;
 import java.util.Date;
 
 class Basic{
