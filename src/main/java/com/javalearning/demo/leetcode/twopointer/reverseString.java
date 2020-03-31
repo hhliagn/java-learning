@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.temp111.twopointer;
+package com.javalearning.demo.leetcode.twopointer;
 
 public class reverseString {
     public static void reverseString(char[] s) {

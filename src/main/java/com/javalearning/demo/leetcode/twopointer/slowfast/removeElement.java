@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.temp111.twopointer.fastslow;
+package com.javalearning.demo.leetcode.twopointer.slowfast;
 
 public class removeElement {
     //定义两个指针，一个快指针每次前移一步，另一个慢指针只在需要的时候前移一步

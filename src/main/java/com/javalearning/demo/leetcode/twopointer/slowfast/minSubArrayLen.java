@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.temp111.twopointer.fastslow;
+package com.javalearning.demo.leetcode.twopointer.slowfast;
 
 public class minSubArrayLen {
     //定义一个累加数sum，从0到n遍历开始累加

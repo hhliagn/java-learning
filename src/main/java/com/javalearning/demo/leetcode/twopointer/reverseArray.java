@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.temp111.twopointer;
+package com.javalearning.demo.leetcode.twopointer;
 
 import java.util.Arrays;
 

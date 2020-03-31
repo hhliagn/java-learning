@@ -1,4 +1,4 @@
-package com.javalearning.demo.test.temp111.twopointer.fastslow;
+package com.javalearning.demo.leetcode.twopointer.slowfast;
 
 public class findMaxConsecutiveOnes {
     //定义两个计数器，一个累加1的和，一个用来比较
