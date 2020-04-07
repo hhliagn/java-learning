@@ -1,7 +1,5 @@
 package com.javalearning.demo.leetcode.conclude;
 
-import java.util.Arrays;
-
 public class removeDuplicates {
     public static int removeDuplicates(int[] nums) {
         int start = 0;
@@ -10,7 +8,7 @@ public class removeDuplicates {
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
             flag = false;
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < start; j++) {
                 if (nums[j] == num){
                     flag = true;
                     count++;
@@ -21,7 +19,7 @@ public class removeDuplicates {
                 nums[start++] = num;
             }
         }
-        return nums.length - count;
+        return count;
     }
 
     public static void main(String[] args) {

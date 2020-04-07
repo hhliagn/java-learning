@@ -1,8 +1,7 @@
 package com.javalearning.demo.leetcode.conclude;
 
-import java.util.Arrays;
-
 public class reverseWords {
+    //双指针
     public static String reverseWords(String s) {
         if (s.length() == 0 ){
             return s;
@@ -41,7 +40,7 @@ public class reverseWords {
     }
 
     public static void main(String[] args) {
-        String s = reverseWords(" ");
+        String s = reverseWords("a good   example");
         System.out.println(s);
     }
 }
