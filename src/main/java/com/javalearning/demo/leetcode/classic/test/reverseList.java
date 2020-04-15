@@ -1,4 +1,4 @@
-package com.javalearning.demo.leetcode.classic;
+package com.javalearning.demo.leetcode.classic.test;
 
 import com.javalearning.demo.leetcode.linkedlist.ListNode;
 
