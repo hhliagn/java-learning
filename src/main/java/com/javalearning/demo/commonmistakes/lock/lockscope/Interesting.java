@@ -1,6 +1,7 @@
 package com.javalearning.demo.commonmistakes.lock.lockscope;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 
 @Slf4j
 public class Interesting {
@@ -27,9 +28,14 @@ public class Interesting {
         log.info("compare end");
     }
 
-    public static void main(String[] args) {
-        Interesting interesting = new Interesting();
-        new Thread(() -> interesting.add()).start();
-        new Thread(() -> interesting.compare()).start();
+    public synchronized void compareRight(){
+        log.info("compare start");
+        for (int i = 0; i < 100000; i++) {
+            Assert.isTrue(a == b);
+            if (a<b){
+                log.info("a:{}, b:{}, a>b: {}", a, b, a>b);
+            }
+        }
+        log.info("compare end");
     }
 }
