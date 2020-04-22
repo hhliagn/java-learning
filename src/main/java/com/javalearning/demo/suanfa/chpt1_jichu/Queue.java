@@ -3,9 +3,9 @@ package com.javalearning.demo.suanfa.chpt1_jichu;
 import java.util.NoSuchElementException;
 
 public class Queue<Item> {
-    private Node<Item> first;    // beginning of queue
-    private Node<Item> last;     // end of queue
-    private int n;               // number of elements on queue
+    private Node<Item> first;    // beginning of queueandstack
+    private Node<Item> last;     // end of queueandstack
+    private int n;               // number of elements on queueandstack
 
     // helper linked list class
     private static class Node<Item> {
