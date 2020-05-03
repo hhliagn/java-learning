@@ -11,7 +11,8 @@ public class CommonMistake {
 //        wrong1();
 //        testScale();
 //        wrong2();
-        right();
+//        right();
+        right2();
     }
 
     public static void wrong1(){
@@ -52,18 +53,27 @@ public class CommonMistake {
     }
 
     public static void wrong2(){
-        System.out.println(new BigDecimal(0.2).add(new BigDecimal(0.7)));
-        System.out.println(new BigDecimal(1.0).subtract(new BigDecimal(0.7)));
-        System.out.println(new BigDecimal(0.415).multiply(new BigDecimal(100)));
-        System.out.println(new BigDecimal(123.8).divide(new BigDecimal(100)));
+        System.out.println(new BigDecimal(0.1).add(new BigDecimal(0.8)));
+        System.out.println(new BigDecimal(2.0).subtract(new BigDecimal(0.9)));
+        System.out.println(new BigDecimal(0.3).multiply(new BigDecimal(100)));
+        System.out.println(new BigDecimal(215.3).divide(new BigDecimal(2.0)));
+
     }
 
     public static void right(){
-        System.out.println(new BigDecimal("0.2").add(new BigDecimal("0.7")));
-        System.out.println(new BigDecimal("1.0").subtract(new BigDecimal("0.7")));
-        System.out.println(new BigDecimal("0.415").multiply(new BigDecimal("100")));
-        System.out.println(new BigDecimal("123.8").divide(new BigDecimal("100")));
+        System.out.println(new BigDecimal("0.1").add(new BigDecimal("0.9")));
+        System.out.println(new BigDecimal("2.0").subtract(new BigDecimal("0.4")));
+        System.out.println(new BigDecimal("4.15").multiply(new BigDecimal("100")));
+        System.out.println(new BigDecimal("32.5").divide(new BigDecimal("2.0")));
     }
+
+    public static void right2(){
+        System.out.println(BigDecimal.valueOf(3.15).add(BigDecimal.valueOf(0.75)));
+        System.out.println(BigDecimal.valueOf(2.0).subtract(BigDecimal.valueOf(0.5)));
+        System.out.println(BigDecimal.valueOf(3.15).multiply(BigDecimal.valueOf(100)));
+        System.out.println(BigDecimal.valueOf(415).divide(BigDecimal.valueOf(2.0)));
+    }
+
 
     private static void print(BigDecimal bigDecimal) {
         log.info("scale {} precision {} result {}", bigDecimal.scale(), bigDecimal.precision(), bigDecimal.multiply(new BigDecimal("4.015")));
