@@ -13,11 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by phil on 4/3/19.
- *
- * @author phil
- */
 @Data
 @Entity
 @Table(name = "t_order_info")
@@ -25,7 +20,7 @@ import java.util.Set;
 @DynamicUpdate
 @DynamicInsert
 @JsonIgnoreProperties(value = {"hibernate_lazy_initializer", "handler", "field_handler"})
-public class OrderModel {
+public class OrderModel { //source: https://thoughts-on-java.org/ultimate-guide-association-mappings-jpa-hibernate/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

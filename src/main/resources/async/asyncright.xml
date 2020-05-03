@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="CONSOLE" class="com.javalearning.demo.commonmistakes.logging.async.MySlowLogAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{40}:%line] - %msg%n</pattern>
+		</layout>
+	</appender>
+	<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="CONSOLE" />
+		<!--展示方法行号-->
+		<includeCallerData>true</includeCallerData>
+		<!--丢弃阈值,队列小于200丢弃INFO级别及一下日志-->
+		<discardingThreshold>200</discardingThreshold>
+		<!--队列长度-->
+		<queueSize>1000</queueSize>
+		<!--入队是否阻塞，true为不阻塞-->
+		<neverBlock>true</neverBlock>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="ASYNC" />
+	</root>
+</configuration>

@@ -6,7 +6,7 @@
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
 //
-//import static javax.persistence.GenerationType.AUTO;
+//import static1 javax.persistence.GenerationType.AUTO;
 //
 //@Entity
 //@Data

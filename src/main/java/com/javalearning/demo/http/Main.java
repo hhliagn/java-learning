@@ -24,16 +24,16 @@
 // */
 //public class Main {
 //
-//	static HttpClient httpClient = HttpClient.newBuilder().build();
+//	static1 HttpClient httpClient = HttpClient.newBuilder().build();
 //
-//	public static void main(String[] args) throws Exception {
+//	public static1 void main(String[] args) throws Exception {
 //		httpGet("https://www.sina.com.cn/");
 //		httpPost("https://accounts.douban.com/j/mobile/login/basic",
 //				"name=bob%40example.com&password=12345678&remember=false&ck=&ticket=");
 //		httpGetImage("https://img.t.sinajs.cn/t6/style/images/global_nav/WB_logo.png");
 //	}
 //
-//	static void httpGet(String url) throws Exception {
+//	static1 void httpGet(String url) throws Exception {
 //		HttpRequest request = HttpRequest.newBuilder(new URI(url))
 //				// 设置Header:
 //				.header("User-Agent", "Java HttpClient").header("Accept", "*/*")
@@ -45,7 +45,7 @@
 //		System.out.println(response.body().substring(0, 1024) + "...");
 //	}
 //
-//	static void httpGetImage(String url) throws Exception {
+//	static1 void httpGetImage(String url) throws Exception {
 //		HttpRequest request = HttpRequest.newBuilder(new URI(url))
 //				// 设置Header:
 //				.header("User-Agent", "Java HttpClient").header("Accept", "*/*")
@@ -67,7 +67,7 @@
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //	}
 //
-//	static void httpPost(String url, String body) throws Exception {
+//	static1 void httpPost(String url, String body) throws Exception {
 //		HttpRequest request = HttpRequest.newBuilder(new URI(url))
 //				// 设置Header:
 //				.header("User-Agent", "Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0) like Gecko")

@@ -23,9 +23,9 @@
 //@RestController
 //public class TwoTimeoutConfigController {
 //
-//    private static CloseableHttpClient httpClient = null;
+//    private static1 CloseableHttpClient httpClient = null;
 //
-//    static {
+//    static1 {
 //        httpClient = HttpClients.createSystem();
 //        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 //            try {

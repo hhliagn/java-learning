@@ -6,9 +6,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-/**
- * Created by sheng zhou on 2019/7/22
- */
 @Entity
 @Data
 @ToString
