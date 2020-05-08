@@ -1,4 +1,4 @@
-package com.javalearning.demo.designpattern.chain;
+package com.javalearning.demo.designpattern.response_chain.wrong;
 
 import com.javalearning.demo.designpattern.factory.demo2.strategy.LogisticsCalc;
 import com.javalearning.demo.designpattern.factory.demo2.strategy.iStrategy;
