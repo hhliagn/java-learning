@@ -3,13 +3,14 @@ package com.javalearning.demo.jpa.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +28,11 @@ public class OrderModel { //source: https://thoughts-on-java.org/ultimate-guide-
     private Integer orderId;
 
     private String name;
+
+    @CreationTimestamp
+    private Date createTime;
+    @UpdateTimestamp
+    private Date updateTime;
 
     /**
      * 一对一

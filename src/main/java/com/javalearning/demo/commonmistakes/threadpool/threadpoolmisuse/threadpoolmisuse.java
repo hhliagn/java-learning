@@ -3,6 +3,7 @@ package com.javalearning.demo.commonmistakes.threadpool.threadpoolmisuse;
 
 import jodd.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class threadpoolmisuse {
 
     public Callable<Integer> calcTask(){
         return ()->{
-            TimeUnit.MILLISECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(1);
             return 1;
         };
     }
@@ -52,9 +53,13 @@ public class threadpoolmisuse {
         fileThreadPool.submit(calcTask()).get();
     }
 
+    private static StopWatch stopWatch = new StopWatch();
     @GetMapping("/right")
     public void right() throws ExecutionException, InterruptedException {
-        ayncThreadPool.submit(calcTask()).get();
+        stopWatch.start("async callable task");
+        ayncThreadPool.submit(calcTask());
+        stopWatch.stop();
+        log.info("{}", stopWatch.prettyPrint());
     }
 
     @PostConstruct

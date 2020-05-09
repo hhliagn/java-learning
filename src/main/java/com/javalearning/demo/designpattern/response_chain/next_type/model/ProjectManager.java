@@ -13,7 +13,7 @@ public class ProjectManager extends Handler{
     }
 
     @Override
-    void handleRequest(int reimburse_amount) {
+    public void handleRequest(int reimburse_amount) {
         if (reimburse_amount > 100){
             successor.handleRequest(reimburse_amount);
         }else {

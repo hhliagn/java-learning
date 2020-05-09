@@ -13,7 +13,7 @@ public class GeneralManager extends Handler {
     }
 
     @Override
-    void handleRequest(int reimburse_amount) {
+    public void handleRequest(int reimburse_amount) {
         assert reimburse_amount > 500;
         System.out.println(this.getClass().getSimpleName() + " handle request");
     }
