@@ -19,7 +19,7 @@ public class LoggingController {
 
     @GetMapping("log")
     public void log() {
-        log.debug("debug");
+        log.debug("debug_stream");
         log.info("info");
         log.warn("warn");
         log.error("error");

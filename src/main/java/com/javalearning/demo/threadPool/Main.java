@@ -15,6 +15,11 @@ public class Main {
 			es.submit(new Task("" + i));
 		}
 		es.shutdown();
+
+
+		new Thread(() -> {
+
+		}).start();
 	}
 }
 
