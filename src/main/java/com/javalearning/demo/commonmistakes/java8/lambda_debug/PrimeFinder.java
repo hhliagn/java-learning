@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.java8_tmp.debug_stream;
+package com.javalearning.demo.commonmistakes.java8.lambda_debug;
 
 import java.util.stream.IntStream;
 

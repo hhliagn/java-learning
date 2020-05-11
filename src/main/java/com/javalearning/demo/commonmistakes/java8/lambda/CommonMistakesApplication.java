@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.java8_tmp;
+package com.javalearning.demo.commonmistakes.java8.lambda;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

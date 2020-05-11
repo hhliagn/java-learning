@@ -1,8 +1,7 @@
-package com.javalearning.demo.commonmistakes.java8_tmp;
+package com.javalearning.demo.commonmistakes.java8.lambda;
 
 import org.junit.Test;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
