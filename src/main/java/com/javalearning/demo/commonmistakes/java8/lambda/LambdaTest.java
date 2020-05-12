@@ -2,12 +2,12 @@ package com.javalearning.demo.commonmistakes.java8.lambda;
 
 import org.junit.Test;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.*;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LambdaTest {
 
@@ -51,5 +51,30 @@ public class LambdaTest {
         BinaryOperator<Integer> add = Integer::sum;
         BinaryOperator<Integer> subtraction = (a, b) -> a - b;
         assertThat(subtraction.apply(add.apply(1, 2), 3), is(0));
+    }
+
+    @Test
+    public void functionalInterface(){
+        Supplier<String> supplier1 = () -> "OK";
+        Supplier<String> supplier2 = String::new;
+
+        Predicate<Integer> predicate = i -> i > 0;
+        Predicate<Integer> predicate1 = i -> i % 2 == 0;
+        assertTrue(predicate.and(predicate1).test(2));
+
+        Function<String, String> function = String::toUpperCase;
+        Function<String, String> function1 = s -> s.concat(s);
+        assertEquals("TEXTTEXT", function.andThen(function1).apply("text"));
+
+        Consumer<String> println = System.out::println;
+        println.andThen(println).accept("abcde");
+
+        Supplier<Integer> supplier = () -> ThreadLocalRandom.current().nextInt();
+        Integer random = supplier.get();
+        System.out.println(random);
+
+        BinaryOperator<Integer> add = Integer::sum;
+        BinaryOperator<Integer> substract = (a, b) -> a - b;
+        assertThat(substract.apply(add.apply(1,2), 3), is(0));
     }
 }

@@ -45,6 +45,13 @@ public class StreamDetailTest {
     }
 
     @Test
+    public void filter1() {
+        orders.stream()
+                .filter(order -> order.getTotalPrice() > 40)
+                .filter(order -> order.getPlacedAt().isAfter(LocalDateTime.now().minusMonths(6)));
+    }
+
+    @Test
     public void map() {
         LongAdder longAdder = new LongAdder();
 
@@ -65,6 +72,17 @@ public class StreamDetailTest {
         System.out.println(IntStream.rangeClosed(1, 10)
                 .mapToObj(i -> new Product((long) i, "product" + i, i * 100.0))
                 .collect(toList()));
+    }
+
+    @Test
+    public void map1(){
+        LongAdder longAdder = new LongAdder();
+        orders.stream().forEach(order -> order.getOrderItemList()
+                .stream().forEach(orderItem -> longAdder.add(orderItem.getProductQuantity())));
+
+        Assert.assertThat(orders.stream().mapToLong(order -> order.getOrderItemList().stream()
+                .mapToLong(orderItem -> orderItem.getProductQuantity()).sum()).sum(), is(longAdder.longValue()));
+
     }
 
     @Test
@@ -89,6 +107,16 @@ public class StreamDetailTest {
                         .mapToDouble(OrderItem::getProductQuantity)).sum());
     }
 
+    public void flatmap(){
+        System.out.println(orders.stream().mapToDouble(Order::getTotalPrice).sum());
+
+        System.out.println(orders.stream().flatMap(order -> order.getOrderItemList().stream())
+        .mapToDouble(OrderItem::getProductPrice).sum());
+
+        System.out.println(orders.stream().flatMapToDouble(order -> order.getOrderItemList().stream()
+                .mapToDouble(OrderItem::getProductPrice)).sum());
+    }
+
     @Test
     public void groupBy() {
         System.out.println("//按照用户名分组，统计下单数量");
@@ -97,10 +125,21 @@ public class StreamDetailTest {
                 .entrySet().stream().sorted(Map.Entry.comparingByValue())
         .collect(toList()));
 
+        System.out.println(orders.stream()
+        .collect(groupingBy(Order::getCustomerName, counting()))
+        .entrySet().stream()
+        .sorted(Map.Entry.comparingByValue())
+        .collect(toList()));
+
 
         System.out.println("//按照用户名分组,统计订单总金额");
         System.out.println(orders.stream()
                 .collect(groupingBy(Order::getCustomerName, summingDouble(Order::getTotalPrice)))
+        .entrySet().stream().sorted(Map.Entry.comparingByValue())
+        .collect(toList()));
+
+        System.out.println(orders.stream()
+        .collect(groupingBy(Order::getCustomerName, summingDouble(Order::getTotalPrice)))
         .entrySet().stream().sorted(Map.Entry.comparingByValue())
         .collect(toList()));
 
@@ -111,6 +150,12 @@ public class StreamDetailTest {
                                 summingDouble(order -> order.getOrderItemList().stream()
                                         .collect(summingInt(OrderItem::getProductQuantity)))))
                 .entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).collect(toList()));
+
+        System.out.println(orders.stream()
+        .collect(groupingBy(Order::getCustomerName, summingDouble(order -> order.getOrderItemList().stream()
+                .collect(summingInt(OrderItem::getProductQuantity)))))
+        .entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+        .collect(toList()));
 
 
         System.out.println("//统计最受欢迎的商品，倒序后取第一个");

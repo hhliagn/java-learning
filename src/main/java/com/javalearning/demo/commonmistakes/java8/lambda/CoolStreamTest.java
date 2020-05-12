@@ -27,16 +27,16 @@ public class CoolStreamTest {
     private Map<Long, Product> cache = new ConcurrentHashMap<>();
 
     private static double calc(List<Integer> ints){
-        List<Point2D> point2DList = new ArrayList<>();
+        List<Point2D> point2DS = new ArrayList<>();
 
         double total = 0;
         int count = 0;
 
         for (Integer i : ints) {
-            point2DList.add(new Point2D.Double((double) i % 3, (double) i / 3));
+            point2DS.add(new Point2D.Double((double) i % 3, (double) i / 3));
         }
 
-        for (Point2D point2D : point2DList) {
+        for (Point2D point2D : point2DS) {
             if (point2D.getY() > 4) {
                 double distance = point2D.distance(0, 0);
                 total += distance;
@@ -50,27 +50,27 @@ public class CoolStreamTest {
     @Test
     public void stream(){
         List<Integer> ints = Arrays.asList(1,2,3,4,5,6,7,8);
-        double average = calc(ints);
-        double streamResult =
-                ints.stream()
-                        .map(i -> new Point2D.Double((double) i % 3, (double) i / 3))
-                        .filter(i -> i.getY() > 4)
-                        .mapToDouble(i -> i.distance(0, 0))
-                        .average()
-                        .orElse(0);
-        assertThat(average, is(streamResult));
+        double calc = calc(ints);
+        double t = ints.stream()
+                .map(i -> new Point2D.Double((double) i %3, (double) i %3))
+                .filter(i -> i.getY() > 4)
+                .mapToDouble(i -> i.distance(0, 0))
+                .average()
+                .orElse(0);
+        assertThat(calc, is(t));
     }
 
     private Product getProductAndCache(Long id) {
         Product product = null;
-
         if (cache.containsKey(id)){
             product = cache.get(id);
-        }else {
-            for (Product p : Product.getData()) {
-                if (p.getId().equals(id)){
-                    product = p;
-                    break;
+
+            if (product == null){
+                for (Product datum : Product.getData()) {
+                    if (datum.getId().equals(id)){
+                        product = datum;
+                        break;
+                    }
                 }
             }
         }

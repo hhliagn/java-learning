@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 
 public class ForEachOrderedTest {
     private static void consume(int i) {
+        System.out.println(i);
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
