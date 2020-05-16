@@ -13,11 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @RestController
 public class IdGenerateController {
 
-    @Autowired
-    private IdGenerateService idGenerateService;
-
-    @GetMapping("/id")
-    public String id(){
-        return idGenerateService.id();
-    }
+//    @Autowired
+//    private IdGenerateService idGenerateService;
+//
+//    @GetMapping("/id")
+//    public String id(){
+//        return idGenerateService.id();
+//    }
 }

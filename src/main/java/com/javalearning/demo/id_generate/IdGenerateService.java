@@ -1,7 +1,5 @@
 package com.javalearning.demo.id_generate;
 
-import com.baidu.fsg.uid.service.UidGenService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,9 +8,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class IdGenerateService {
-    @Autowired
-    private UidGenService uidGenService;
-    public String id(){
-        return String.valueOf(uidGenService.getUid());
-    }
+//    @Autowired
+//    private UidGenService uidGenService;
+//    public String id(){
+//        return String.valueOf(uidGenService.getUid());
+//    }
 }
