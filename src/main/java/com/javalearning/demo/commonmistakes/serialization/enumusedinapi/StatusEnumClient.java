@@ -13,7 +13,7 @@ enum StatusEnumClient {
     @JsonEnumDefaultValue
     UNKNOWN(-1, "未知");
 
-    @JsonValue
+//    @JsonValue
     private final int status;
     private final String desc;
 

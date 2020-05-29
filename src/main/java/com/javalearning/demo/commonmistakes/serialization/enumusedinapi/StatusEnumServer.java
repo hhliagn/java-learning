@@ -10,7 +10,8 @@ enum StatusEnumServer {
     DELIVERED(3, "已送到"),
     FINISHED(4, "已完成"),
     CANCELED(5, "已取消");
-    @JsonValue
+
+//    @JsonValue
     private final int status;
     private final String desc;
 

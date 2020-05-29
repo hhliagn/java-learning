@@ -29,6 +29,9 @@ public class RedisTemplateController {
     @Autowired
     private RedisTemplate<String, User> userRedisTemplate;
 
+    @Autowired
+    private RedisTemplate<String, Long> countRedisTemplate;
+
     @PostConstruct
     public void init() throws JsonProcessingException {
         User user = new User("lhh", 24);
@@ -59,5 +62,32 @@ public class RedisTemplateController {
         User userFromRedis = userRedisTemplate.opsForValue().get(user.getName());
         log.info("userRedisTemplate get {} {}", userFromRedis, userFromRedis.getClass());
         log.info("stringRedisTemplate get {}", stringRedisTemplate.opsForValue().get(user.getName()));
+    }
+
+    @GetMapping("wrong2")
+    public void wrong2() {
+        String key = "testCounter";
+        countRedisTemplate.opsForValue().set(key, 1L);
+        log.info("{} {}", countRedisTemplate.opsForValue().get(key),
+                countRedisTemplate.opsForValue().get(key) instanceof Long);
+
+        Long l1 = getLongFromRedis(key);
+        countRedisTemplate.opsForValue().set(key, Integer.MAX_VALUE + 1L);
+        log.info("{} {}", countRedisTemplate.opsForValue().get(key),
+                countRedisTemplate.opsForValue().get(key) instanceof Long);
+
+        Long l2 = getLongFromRedis(key);
+        log.info("{} {}", l1, l2);
+    }
+
+    private Long getLongFromRedis(String key) {
+        Object o = countRedisTemplate.opsForValue().get(key);
+        if (o instanceof Integer) {
+            return ((Integer) o).longValue();
+        }
+        if (o instanceof Long) {
+            return (Long) o;
+        }
+        return null;
     }
 }

@@ -21,7 +21,9 @@ public class EnumUsedInAPIController {
 
     @GetMapping("getOrderStatusClient")
     public void getOrderStatusClient() {
-        StatusEnumClient result = restTemplate.getForObject("http://localhost:45678/enumusedinapi/getOrderStatus", StatusEnumClient.class);
+        StatusEnumClient result
+                = restTemplate.getForObject("http://localhost:8080/enumusedinapi/getOrderStatus",
+                StatusEnumClient.class);
         log.info("result {}", result);
     }
 
@@ -29,8 +31,11 @@ public class EnumUsedInAPIController {
     public void queryOrdersByStatusListClient() {
         List<StatusEnumClient> request = Arrays.asList(StatusEnumClient.CREATED, StatusEnumClient.PAID);
         HttpEntity<List<StatusEnumClient>> entity = new HttpEntity<>(request, new HttpHeaders());
-        List<StatusEnumClient> response = restTemplate.exchange("http://localhost:45678/enumusedinapi/queryOrdersByStatusList",
-                HttpMethod.POST, entity, new ParameterizedTypeReference<List<StatusEnumClient>>() {
+        List<StatusEnumClient> response
+                = restTemplate.exchange("http://localhost:45678/enumusedinapi/queryOrdersByStatusList",
+                HttpMethod.POST,
+                entity,
+                new ParameterizedTypeReference<List<StatusEnumClient>>() {
                 }).getBody();
         log.info("result {}", response);
     }

@@ -11,10 +11,12 @@ public class APIResultRight {
     private int code;
 
     public APIResultRight() {
+        System.out.println("calling APIResultRight no-Args constructor");
     }
 
     @JsonCreator
     public APIResultRight(@JsonProperty("code") int code) {
+        System.out.println("calling APIResultRight no-Args constructor");
         this.code = code;
         if (code == 2000) success = true;
         else success = false;

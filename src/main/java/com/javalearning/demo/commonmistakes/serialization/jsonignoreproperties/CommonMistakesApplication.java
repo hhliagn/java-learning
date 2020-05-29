@@ -1,5 +1,6 @@
 package com.javalearning.demo.commonmistakes.serialization.jsonignoreproperties;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.javalearning.demo.commonmistakes.common.Utils;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 public class CommonMistakesApplication {
 
     public static void main(String[] args) {
-        Utils.loadPropertySource(CommonMistakesApplication.class, "jackson.properties");
+//        Utils.loadPropertySource(CommonMistakesApplication.class, "com/javalearning/demo/commonmistakes/serialization/jsonignoreproperties/jackson.properties");
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 

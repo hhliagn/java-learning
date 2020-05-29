@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class CommonMistakesApplication {
 
     public static void main(String[] args) {
-        Utils.loadPropertySource(CommonMistakesApplication.class, "jackson.properties");
+//        Utils.loadPropertySource(CommonMistakesApplication.class, "jackson.properties");
 
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
@@ -26,11 +26,11 @@ public class CommonMistakesApplication {
                 .build();
     }
 
-    @Bean
-    public Module enumModule() {
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(Enum.class, new EnumDeserializer());
-        return module;
-    }
+//    @Bean
+//    public Module enumModule() {
+//        SimpleModule module = new SimpleModule();
+//        module.addDeserializer(Enum.class, new EnumDeserializer());
+//        return module;
+//    }
 }
 
