@@ -20,53 +20,104 @@ import java.util.stream.LongStream;
 @RequestMapping("weakhashmapoom")
 @Slf4j
 public class WeakHashMapOOMController {
-    private Map<User, UserProfile> cache = new WeakHashMap<>();
+
+    private Map<String, User> cache0 = new WeakHashMap<>();
+    private Map<User, UserProfile> cache1 = new WeakHashMap<>();
     private Map<User, WeakReference<UserProfile>> cache2 = new WeakHashMap<>();
     private Map<User, UserProfile> cache3 = new ConcurrentReferenceHashMap<>();
 
-    @GetMapping("wrong")
-    public void wrong() {
-        String userName = "zhuye";
+    @GetMapping("/normal")
+    public void normal(){
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
-                () -> log.info("cache size:{}", cache.size()), 1, 1, TimeUnit.SECONDS);
+                () -> log.info("cache0 size: {}", cache0.size()),
+                1,
+                1,
+                TimeUnit.SECONDS
+        );
+
+        String userName = "lhh";
         LongStream.rangeClosed(1, 2000000).forEach(i -> {
             User user = new User(userName + i);
-            cache.put(user, new UserProfile(user, "location" + i));
+            cache0.put(user.getName(), user);
         });
     }
 
-    @GetMapping("right")
-    public void right() {
-        String userName = "zhuye";
+    @GetMapping("/wrong")
+    public void wrong() throws InterruptedException { //size: 200_0000
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
-                () -> log.info("cache size:{}", cache2.size()), 1, 1, TimeUnit.SECONDS);
+                () -> log.info("cache0 size: {}", cache1.size()),
+                1,
+                1,
+                TimeUnit.SECONDS
+        );
+
+        String userName = "lhh";
         LongStream.rangeClosed(1, 2000000).forEach(i -> {
             User user = new User(userName + i);
-            cache2.put(user, new WeakReference(new UserProfile(user, "location" + i)));
+            cache1.put(user, new UserProfile(user, "location" + i));
         });
+
+        TimeUnit.SECONDS.sleep(10);
+        System.gc();
     }
 
-    @GetMapping("right2")
-    public void right2() {
-        String userName = "zhuye";
+    @GetMapping("/right")
+    public void right1() throws InterruptedException { //size: 94643
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
-                () -> log.info("cache size:{}", cache.size()), 1, 1, TimeUnit.SECONDS);
+                () -> log.info("cache0 size: {}", cache1.size()),
+                1,
+                1,
+                TimeUnit.SECONDS
+        );
+
+        String userName = "lhh";
         LongStream.rangeClosed(1, 2000000).forEach(i -> {
             User user = new User(userName + i);
-            cache.put(user, new UserProfile(new User(user.getName()), "location" + i));
+            cache1.put(user, new UserProfile(new User(userName + i), "location" + i));
         });
+
+        TimeUnit.SECONDS.sleep(10);
+        System.gc();
     }
 
-    @GetMapping("right3")
-    public void right3() {
-        String userName = "zhuye";
+    @GetMapping("/right2")
+    public void right2() throws InterruptedException { //size: 726870
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
-                () -> log.info("cache size:{}", cache3.size()), 1, 1, TimeUnit.SECONDS);
+                () -> log.info("cache0 size: {}", cache2.size()),
+                1,
+                1,
+                TimeUnit.SECONDS
+        );
+
+        String userName = "lhh";
+        LongStream.rangeClosed(1, 2000000).forEach(i -> {
+            User user = new User(userName + i);
+            cache2.put(user, new WeakReference<>(new UserProfile(user, "location" + i)));
+        });
+
+        TimeUnit.SECONDS.sleep(10);
+        System.gc();
+    }
+
+    @GetMapping("/right3")
+    public void right3() throws InterruptedException { //size: 2000000
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
+                () -> log.info("cache0 size: {}", cache3.size()),
+                1,
+                1,
+                TimeUnit.SECONDS
+        );
+
+        String userName = "lhh";
         LongStream.rangeClosed(1, 2000000).forEach(i -> {
             User user = new User(userName + i);
             cache3.put(user, new UserProfile(user, "location" + i));
         });
+
+        TimeUnit.SECONDS.sleep(10);
+        System.gc();
     }
+
 
     @Data
     @AllArgsConstructor

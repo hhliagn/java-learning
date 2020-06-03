@@ -11,22 +11,24 @@ import java.util.concurrent.TimeUnit;
 
 
 @RestController
-@RequestMapping("impropermaxheadersize")
+@RequestMapping("/impropermaxheadersize")
 @Slf4j
 public class ImproperMaxHeaderSizeController {
+
     @Autowired
     private Environment env;
 
     //wrk -t10 -c100 -d 60s http://localhost:45678/impropermaxheadersize/oom
     //-Xmx1g -Xms1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=.
     //https://tomcat.apache.org/tomcat-8.0-doc/config/http.html
-    @GetMapping("oom")
+    //The maximum size of the request and response HTTP header, specified in bytes.
+    //If not specified, this attribute is set to 8192 (8 KB).
+    @GetMapping("/oom")
     public String oom() {
         log.info("Got request");
         log.info("server.max-http-header-size={},server.tomcat.max-threads={}",
-                env.getProperty("server.max-http-header-size")
-                , env.getProperty("server.tomcat.max-threads")
-        );
+                env.getProperty("server.max-http-header-size"),
+                env.getProperty("server.tomcat.max-threads"));
         try {
             TimeUnit.MILLISECONDS.sleep(1);
         } catch (InterruptedException e) {
