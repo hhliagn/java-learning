@@ -1,10 +1,10 @@
-package com.javalearning.demo.commonmistakes.clientdata;
+package com.javalearning.demo.commonmistakes.clientdata.trustclientuserid;
 
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
-@Inherited
+@Documented
 public @interface LoginRequired {
     String sessionKey() default "currentUser";
 }
