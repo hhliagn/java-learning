@@ -1,9 +1,8 @@
 package com.javalearning.demo.commonmistakes.redundantcode.reflection;
 
-import com.javalearning.demo.commonmistakes.redundantcode.reflection.demo.BetterBankService;
-import com.javalearning.demo.commonmistakes.redundantcode.reflection.wrong.BankService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.geekbang.time.commonmistakes.redundantcode.reflection.right.BetterBankService;
+import org.geekbang.time.commonmistakes.redundantcode.reflection.wrong.BankService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,9 +12,6 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("reflection")
 public class ReflectionController {
-
-    @Autowired
-    private BetterBankService betterBankService;
 
     @PostMapping("/bank/createUser")
     public String createUser(@RequestBody String data) {
@@ -38,7 +34,7 @@ public class ReflectionController {
 
     @GetMapping("right")
     public void right() throws IOException {
-        betterBankService.createUser("zhuye", "xxxxxxxxxxxxxxxxxx", "13612345678", 36);
-        betterBankService.pay(1234L, new BigDecimal("100.5"));
+        BetterBankService.createUser("zhuye", "xxxxxxxxxxxxxxxxxx", "13612345678", 36);
+        BetterBankService.pay(1234L, new BigDecimal("100.5"));
     }
 }
