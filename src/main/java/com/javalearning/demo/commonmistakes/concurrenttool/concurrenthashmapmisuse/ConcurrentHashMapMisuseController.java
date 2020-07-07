@@ -17,12 +17,11 @@ import java.util.stream.LongStream;
 @RestController
 @RequestMapping("/concurrent")
 @Slf4j
-public class concurrentMap {
+public class ConcurrentHashMapMisuseController {
 
     private static int THREAD_COUNT = 10;
     private static int ITEM_COUNT = 1000;
 
-    //帮助方法，用来获得一个指定元素数量模拟数据的ConcurrentHashMap
     private ConcurrentHashMap<String, Long> getData(int count) {
         return LongStream.rangeClosed(1, count)
                 .boxed()
@@ -30,45 +29,38 @@ public class concurrentMap {
                         (o1, o2) -> o1, ConcurrentHashMap::new));
     }
 
-
     @GetMapping("/wrong")
-    public String wrong() throws InterruptedException {
-        ConcurrentHashMap concurrentHashMap = getData(ITEM_COUNT - 100);
-        log.info("init size: {}", concurrentHashMap.size());
+    public Integer wrong() throws InterruptedException {
+        ConcurrentHashMap<String, Long> concurrentHashMap = getData(ITEM_COUNT - 100);
+        log.info("data size: {}", concurrentHashMap.size());
 
         ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
-        forkJoinPool.execute(()->
-            IntStream.rangeClosed(1,10).parallel().forEach((i)-> {
-                int gap = ITEM_COUNT - concurrentHashMap.size();
-                log.info("gap size: {}", gap);
-                concurrentHashMap.putAll(getData(gap));
-            }));
-
+        forkJoinPool.execute(() -> IntStream.rangeClosed(1, 10).parallel().forEach(i ->{
+            int gap = ITEM_COUNT - concurrentHashMap.size();
+            log.info("gap size: {}", gap);
+            concurrentHashMap.putAll(getData(gap));
+        }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        log.info("finish size: {}", concurrentHashMap.size());
-        return "OK";
+        return concurrentHashMap.size();
     }
 
     @GetMapping("/right")
-    public String right() throws InterruptedException {
-        ConcurrentHashMap concurrentHashMap = getData(ITEM_COUNT - 100);
-        log.info("init size: {}", concurrentHashMap.size());
+    public Integer right() throws InterruptedException {
+        ConcurrentHashMap<String, Long> concurrentHashMap = getData(ITEM_COUNT - 100);
+        log.info("data size: {}", concurrentHashMap.size());
 
         ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
-        forkJoinPool.execute(()->
-                IntStream.rangeClosed(1,10).parallel().forEach((i)-> {
-                    synchronized (concurrentHashMap){
-                        int gap = ITEM_COUNT - concurrentHashMap.size();
-                        log.info("gap size: {}", gap);
-                        concurrentHashMap.putAll(getData(gap));
-                    }
-                }));
-
+        forkJoinPool.execute(() -> IntStream.rangeClosed(1, 10).parallel().forEach(i -> {
+            synchronized (concurrentHashMap){
+                int gap = ITEM_COUNT - concurrentHashMap.size();
+                log.info("gap size: {}", gap);
+                concurrentHashMap.putAll(getData(gap));
+            }
+        }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        log.info("finish size: {}", concurrentHashMap.size());
-        return "OK";
+        return concurrentHashMap.size();
     }
 
 }

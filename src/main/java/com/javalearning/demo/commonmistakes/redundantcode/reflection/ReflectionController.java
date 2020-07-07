@@ -1,8 +1,8 @@
 package com.javalearning.demo.commonmistakes.redundantcode.reflection;
 
+import com.javalearning.demo.commonmistakes.redundantcode.reflection.right.BetterBankService;
+import com.javalearning.demo.commonmistakes.redundantcode.reflection.wrong.BankService;
 import lombok.extern.slf4j.Slf4j;
-import org.geekbang.time.commonmistakes.redundantcode.reflection.right.BetterBankService;
-import org.geekbang.time.commonmistakes.redundantcode.reflection.wrong.BankService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
