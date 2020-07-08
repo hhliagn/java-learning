@@ -1,6 +1,7 @@
 package com.javalearning.demo.commonmistakes.concurrenttool.copyonwritelistmisuse;
 
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,24 +19,18 @@ import java.util.stream.IntStream;
 public class CopyOnWriteListMisuseController {
 
     @GetMapping("write")
-    public Map testWrite() {
+    public String testWrite() {
         List<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
-        List<Integer> synchronizedList = Collections.synchronizedList(new ArrayList<>());
+        List<Integer> synchronizedArrayList = Collections.synchronizedList(new ArrayList<>());
         StopWatch stopWatch = new StopWatch();
-        int loopCount = 100000;
         stopWatch.start("Write:copyOnWriteArrayList");
-        IntStream.rangeClosed(1, loopCount).parallel().forEach(__ -> copyOnWriteArrayList.add(ThreadLocalRandom.current().nextInt(loopCount)));
+        IntStream.rangeClosed(1, 100000).forEach(i -> copyOnWriteArrayList.add(ThreadLocalRandom.current().nextInt(100)));
         stopWatch.stop();
-        stopWatch.start("Write:synchronizedList");
-        IntStream.rangeClosed(1, loopCount).parallel().forEach(__ -> synchronizedList.add(ThreadLocalRandom.current().nextInt(loopCount)));
+        stopWatch.start("Write:synchronizedArrayList");
+        IntStream.rangeClosed(1, 100000).forEach(i -> synchronizedArrayList.add(ThreadLocalRandom.current().nextInt(100)));
         stopWatch.stop();
-
-
         log.info(stopWatch.prettyPrint());
-        Map<String, Integer> map = new HashMap<>();
-        map.put("copyOnWriteArrayList", copyOnWriteArrayList.size());
-        map.put("synchronizedList", synchronizedList.size());
-        return map;
+        return "OK";
     }
 
     private void addAll(List<Integer> list) {
@@ -43,23 +38,19 @@ public class CopyOnWriteListMisuseController {
     }
 
     @GetMapping("read")
-    public Map testRead() {
+    public String testRead() {
         List<Integer> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
-        List<Integer> synchronizedList = Collections.synchronizedList(new ArrayList<>());
+        List<Integer> synchronizedArrayList = Collections.synchronizedList(new ArrayList<>());
         addAll(copyOnWriteArrayList);
-        addAll(synchronizedList);
+        addAll(synchronizedArrayList);
         StopWatch stopWatch = new StopWatch();
-        int loopCount = 1000000;
         stopWatch.start("Read:copyOnWriteArrayList");
-        IntStream.rangeClosed(1, loopCount).parallel().forEach(__ -> copyOnWriteArrayList.get(ThreadLocalRandom.current().nextInt(loopCount)));
+        IntStream.rangeClosed(1, 1000000).forEach(i -> copyOnWriteArrayList.get(ThreadLocalRandom.current().nextInt(100)));
         stopWatch.stop();
-        stopWatch.start("Read:copyOnWriteArrayList");
-        IntStream.rangeClosed(1, loopCount).parallel().forEach(__ -> synchronizedList.get(ThreadLocalRandom.current().nextInt(loopCount)));
+        stopWatch.start("Read:synchronizedArrayList");
+        IntStream.rangeClosed(1, 1000000).forEach(i -> synchronizedArrayList.get(ThreadLocalRandom.current().nextInt(100)));
         stopWatch.stop();
         log.info(stopWatch.prettyPrint());
-        Map<String, Integer> map = new HashMap<>();
-        map.put("copyOnWriteArrayList", copyOnWriteArrayList.size());
-        map.put("synchronizedList", synchronizedList.size());
-        return map;
+        return "OK";
     }
 }

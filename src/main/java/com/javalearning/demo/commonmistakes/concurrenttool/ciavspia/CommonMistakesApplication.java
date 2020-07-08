@@ -15,26 +15,29 @@ public class CommonMistakesApplication {
 
     public static void main(String[] args) {
         test(new HashMap<>());
-        System.out.println("=================");
+        System.out.println("---------------");
         test(new ConcurrentHashMap());
     }
 
     public static void test(Map map){
         try {
-            log.info("{}", map.putIfAbsent("test1", null));
+            map.putIfAbsent("test1", null);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("{}", map.containsKey("test1"));
+        System.out.println(map.containsKey("test1"));
 
-        log.info("{}", map.computeIfAbsent("test2", k -> null));
-        log.info("{}", map.containsKey("test2"));
+        System.out.println("=====");
 
-        log.info("{}",  map.putIfAbsent("test3", "test3"));
-        log.info("{}", map.computeIfAbsent("test4",   k -> "test4"));
+        map.computeIfAbsent("test2", k -> null);
+        System.out.println(map.containsKey("test2"));
 
-        log.info("{}", map.putIfAbsent("test5", getValue()));
-        log.info("{}", map.computeIfAbsent("test6", k -> getValue()));
+        System.out.println("=====");
+
+        System.out.println(map.putIfAbsent("test3", "test3"));
+        System.out.println(map.computeIfAbsent("test4", k -> "test4"));
+
+        System.out.println("=====");
     }
 
     public static String getValue(){
@@ -46,6 +49,8 @@ public class CommonMistakesApplication {
         return UUID.randomUUID().toString();
     }
 
+    //pia 始终返回null 旧值，cia始终返回新值
+    //HashMap 的 pia 可以 set null value , concurrentHashMap 的 pia 不可以 set null value
 
 }
 

@@ -12,30 +12,24 @@ import java.util.Map;
 @RequestMapping("/threadlocal")
 public class ThreadLocalMisuseController {
 
-    private static final ThreadLocal<Integer> currentUser = ThreadLocal.withInitial(() -> null);
+    private static final ThreadLocal<Integer> currentUser = ThreadLocal.withInitial(()-> null);
 
-    @GetMapping("wrong")
-    public Map wrong(@RequestParam("userId") Integer userId) {
-        String before  = Thread.currentThread().getName() + ":" + currentUser.get();
+    @GetMapping("/wrong")
+    public void wrong(Integer userId){
+        Integer before = currentUser.get();
+        System.out.println(Thread.currentThread().getName() + " " + before);
         currentUser.set(userId);
-        String after  = Thread.currentThread().getName() + ":" + currentUser.get();
-        Map result = new HashMap();
-        result.put("before", before);
-        result.put("after", after);
-        return result;
+        System.out.println(Thread.currentThread().getName() + " " + currentUser.get());
     }
 
-    @GetMapping("right")
-    public Map right(@RequestParam("userId") Integer userId){
+    @GetMapping("/right")
+    public void right(Integer userId){
         try {
             Integer before = currentUser.get();
-            Map map = new HashMap();
+            System.out.println(Thread.currentThread().getName() + " " + before);
             currentUser.set(userId);
-            Integer after = currentUser.get();
-            map.put("before", before);
-            map.put("after", after);
-            return map;
-        } finally {
+            System.out.println(Thread.currentThread().getName() + " " + currentUser.get());
+        }finally {
             currentUser.remove();
         }
     }

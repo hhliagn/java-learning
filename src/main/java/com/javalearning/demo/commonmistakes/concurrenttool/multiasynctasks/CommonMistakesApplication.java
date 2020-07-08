@@ -14,14 +14,12 @@ public class CommonMistakesApplication {
     private static ExecutorService threadPool = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) {
-        test1();
+        test2();
     }
 
     private static void test1() {
         long begin = System.currentTimeMillis();
-        List<Future<Integer>> futures = IntStream.rangeClosed(1, 4)
-                .mapToObj(i -> threadPool.submit(getAsyncTask(i))).collect(Collectors.toList());
-
+        List<Future<Integer>> futures = IntStream.rangeClosed(1, 4).mapToObj(i -> threadPool.submit(getAsyncTask(i))).collect(Collectors.toList());
         List<Integer> result = futures.stream().map(future -> {
             try {
                 return future.get(1, TimeUnit.SECONDS);
@@ -30,7 +28,7 @@ public class CommonMistakesApplication {
                 return -1;
             }
         }).collect(Collectors.toList());
-        log.info("result {} took {} ms", result, System.currentTimeMillis() - begin);
+        log.info("result: {}, took: {}", result, System.currentTimeMillis() - begin);
     }
 
     private static Callable<Integer> getAsyncTask(int i) {
@@ -51,7 +49,7 @@ public class CommonMistakesApplication {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        log.info("result {} took {} ms", result, System.currentTimeMillis() - begin);
+        log.info("result: {}, took: {}", result, System.currentTimeMillis() - begin);
     }
 
     private static Runnable executeAsyncTask(int i, CountDownLatch countDownLatch, List<Integer> result) {

@@ -31,36 +31,32 @@ public class ConcurrentHashMapMisuseController {
 
     @GetMapping("/wrong")
     public Integer wrong() throws InterruptedException {
-        ConcurrentHashMap<String, Long> concurrentHashMap = getData(ITEM_COUNT - 100);
-        log.info("data size: {}", concurrentHashMap.size());
-
-        ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
-        forkJoinPool.execute(() -> IntStream.rangeClosed(1, 10).parallel().forEach(i ->{
-            int gap = ITEM_COUNT - concurrentHashMap.size();
+        ConcurrentHashMap<String, Long> freqs = getData(ITEM_COUNT - 100);
+        ForkJoinPool forkJoinPool  =new ForkJoinPool(THREAD_COUNT);
+        forkJoinPool.execute(() -> IntStream.rangeClosed(1, 10).parallel().forEach(i -> {
+            int gap = ITEM_COUNT - freqs.size();
             log.info("gap size: {}", gap);
-            concurrentHashMap.putAll(getData(gap));
+            freqs.putAll(getData(gap));
         }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        return concurrentHashMap.size();
+        return freqs.size();
     }
 
     @GetMapping("/right")
     public Integer right() throws InterruptedException {
-        ConcurrentHashMap<String, Long> concurrentHashMap = getData(ITEM_COUNT - 100);
-        log.info("data size: {}", concurrentHashMap.size());
-
-        ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
+        ConcurrentHashMap<String, Long> freqs = getData(ITEM_COUNT - 100);
+        ForkJoinPool forkJoinPool  =new ForkJoinPool(THREAD_COUNT);
         forkJoinPool.execute(() -> IntStream.rangeClosed(1, 10).parallel().forEach(i -> {
-            synchronized (concurrentHashMap){
-                int gap = ITEM_COUNT - concurrentHashMap.size();
+            synchronized (freqs){
+                int gap = ITEM_COUNT - freqs.size();
                 log.info("gap size: {}", gap);
-                concurrentHashMap.putAll(getData(gap));
+                freqs.putAll(getData(gap));
             }
         }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        return concurrentHashMap.size();
+        return freqs.size();
     }
 
 }

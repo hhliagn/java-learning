@@ -48,35 +48,45 @@ public class ConcurrentHashMapPerformanceController {
     }
 
     private Map<String, Long> normaluse() throws InterruptedException {
-        ConcurrentHashMap<String, Long> fres = new ConcurrentHashMap<>(ITEM_COUNT);
+        ConcurrentHashMap<String, Long> freqs = new ConcurrentHashMap<>(ITEM_COUNT);
         ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
         forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).parallel().forEach(i -> {
-            String key = "item" + ThreadLocalRandom.current().nextInt(ITEM_COUNT);
-            synchronized (fres){
-                if (fres.containsKey(key)){
-                    fres.put(key, fres.get(key) + 1);
+            synchronized (freqs){
+                String key = "item" + ThreadLocalRandom.current().nextInt(ITEM_COUNT);
+                if (freqs.containsKey(key)){
+                    freqs.put(key, freqs.get(key) + 1);
                 }else {
-                    fres.put(key, 1L);
+                    freqs.put(key, 1L);
                 }
             }
         }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        return  fres;
+        return freqs;
     }
 
     private Map<String, Long> gooduse() throws InterruptedException {
-        ConcurrentHashMap<String, LongAdder> fres = new ConcurrentHashMap<>(ITEM_COUNT);
+        ConcurrentHashMap<String, LongAdder> freqs = new ConcurrentHashMap<>(ITEM_COUNT);
         ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
         forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).parallel().forEach(i -> {
             String key = "item" + ThreadLocalRandom.current().nextInt(ITEM_COUNT);
-            fres.computeIfAbsent(key, k -> new LongAdder()).increment();
+            freqs.computeIfAbsent(key, k -> new LongAdder()).increment();
         }));
         forkJoinPool.shutdown();
         forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
-        return fres.entrySet().stream().collect(Collectors.toMap(
+        Map<String, Long> result = freqs.entrySet().stream().collect(Collectors.toMap(
                 e -> e.getKey(),
                 e -> e.getValue().longValue()
         ));
+        return result;
     }
+
+//    public static void main(String[] args) throws InterruptedException {
+//        LongAdder longAdder = new LongAdder();
+//        ForkJoinPool forkJoinPool = new ForkJoinPool(ITEM_COUNT);
+//        forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).forEach(i -> longAdder.increment()));
+//        forkJoinPool.shutdown();
+//        forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
+//        log.info("{}", longAdder.longValue());
+//    }
 }
