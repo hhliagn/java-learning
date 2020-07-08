@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -19,78 +18,81 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Slf4j
-@RequestMapping("deadlock")
+
 @RestController
+@RequestMapping("deadlock")
+@Slf4j
 public class DeadLockController {
 
-    private Map<String, Item> items = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Item> items = new ConcurrentHashMap<>();
 
     public DeadLockController(){
-        IntStream.range(0,10).parallel().forEach(i->items.put("item" + i, new Item("item" + i)));
+        IntStream.range(0, 10).forEach(i -> items.put("item" + i, new Item("item" + i)));
     }
 
-    public List<Item> createCart(){
-        return IntStream.rangeClosed(1,3)
-                .mapToObj(i->"item"+ThreadLocalRandom.current().nextInt(items.size()))
-                .map(name->items.get(name)).collect(Collectors.toList());
-    }
+    private boolean createOrder(List<Item> order) {
+        List<ReentrantLock> locks = new ArrayList<>();
 
-    public boolean createOrder(List<Item> items){
-        List<ReentrantLock> locks= new ArrayList<>();
-        for (Item item : items) {
+        for (Item item : order) {
             try {
-                if (item.lock.tryLock(10, TimeUnit.SECONDS)){
+                if (item.lock.tryLock(10, TimeUnit.SECONDS)) {
                     locks.add(item.lock);
+                } else {
+                    locks.forEach(ReentrantLock::unlock);
+                    return false;
                 }
-            }catch (InterruptedException e){
-                locks.forEach(ReentrantLock::unlock);
-                return false;
+            } catch (InterruptedException e) {
             }
         }
         try {
-            items.forEach(item -> item.remaining--);
+            order.forEach(item -> item.remaining--);
         } finally {
             locks.forEach(ReentrantLock::unlock);
         }
         return true;
     }
 
+    private List<Item> createCart() {
+        return IntStream.rangeClosed(1, 3)
+                .mapToObj(i -> "item" + ThreadLocalRandom.current().nextInt(items.size()))
+                .map(name -> items.get(name)).collect(Collectors.toList());
+    }
+
     @GetMapping("wrong")
     public long wrong() {
         long begin = System.currentTimeMillis();
-        //并发进行100次下单操作，统计成功次数
         long success = IntStream.rangeClosed(1, 100).parallel()
                 .mapToObj(i -> {
-                    List<Item> cart = createCart();
-                    return createOrder(cart);
+                    List<Item> items = createCart();
+                    return createOrder(items);
                 })
                 .filter(result -> result)
                 .count();
-        log.info("success:{} totalRemaining:{} took:{}ms items:{}",
+        log.info("success: {} totalRemaining:{} took:{} items:{}",
                 success,
                 items.entrySet().stream().map(item -> item.getValue().remaining).reduce(0, Integer::sum),
-                System.currentTimeMillis() - begin, items);
+                System.currentTimeMillis() - begin,
+                items);
         return success;
     }
 
     @GetMapping("right")
     public long right() {
         long begin = System.currentTimeMillis();
-        //并发进行100次下单操作，统计成功次数
         long success = IntStream.rangeClosed(1, 100).parallel()
                 .mapToObj(i -> {
-                    List<Item> cart = createCart().stream()
+                    List<Item> items = createCart()
+                            .stream()
                             .sorted(Comparator.comparing(Item::getName))
                             .collect(Collectors.toList());
-                    return createOrder(cart);
-                })
-                .filter(result -> result)
+                    return createOrder(items);
+                }).filter(result -> result)
                 .count();
-        log.info("success:{} totalRemaining:{} took:{}ms items:{}",
+        log.info("success: {} totalRemaining:{} took:{} items:{}",
                 success,
                 items.entrySet().stream().map(item -> item.getValue().remaining).reduce(0, Integer::sum),
-                System.currentTimeMillis() - begin, items);
+                System.currentTimeMillis() - begin,
+                items);
         return success;
     }
 
@@ -99,7 +101,6 @@ public class DeadLockController {
     static class Item{
         final String name;
         int remaining = 1000;
-
         @ToString.Exclude
         ReentrantLock lock = new ReentrantLock();
     }
