@@ -1,9 +1,9 @@
 package com.javalearning.demo.commonmistakes.lock.lockscope;
 
 import lombok.Getter;
-import lombok.Setter;
 
 public class Data {
+
     @Getter
     private static int counter = 0;
     private static Object lock = new Object();

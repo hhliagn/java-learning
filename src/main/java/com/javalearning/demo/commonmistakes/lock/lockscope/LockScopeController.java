@@ -8,38 +8,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.stream.IntStream;
 
-@RestController
-@RequestMapping("lockscope")
 @Slf4j
+@RestController
+@RequestMapping("/lockscope")
 public class LockScopeController {
 
-    @GetMapping("wrong")
-    public int wrong(@RequestParam(value = "count", defaultValue = "1000000") int count) {
+    @GetMapping("/wrong")
+    public int wrong(@RequestParam(value = "count", defaultValue = "100000") int count){
         Data.reset();
         IntStream.rangeClosed(1, count).parallel().forEach(i -> new Data().wrong());
         return Data.getCounter();
     }
 
-    @GetMapping("right")
-    public int right(@RequestParam(value = "count", defaultValue = "1000000") int count) {
+    @GetMapping("/right")
+    public int right(@RequestParam(value = "count", defaultValue = "100000") int count){
         Data.reset();
         IntStream.rangeClosed(1, count).parallel().forEach(i -> new Data().right());
         return Data.getCounter();
     }
 
-    @GetMapping("wrong2")
-    public String wrong2() {
+    @GetMapping("/wrong2")
+    public void wrong2(){
         Interesting interesting = new Interesting();
         new Thread(() -> interesting.add()).start();
         new Thread(() -> interesting.compare()).start();
-        return "OK";
     }
 
-    @GetMapping("right2")
-    public String right2() {
+    @GetMapping("/right2")
+    public void right2(){
         Interesting interesting = new Interesting();
         new Thread(() -> interesting.add()).start();
         new Thread(() -> interesting.compareRight()).start();
-        return "OK";
     }
 }

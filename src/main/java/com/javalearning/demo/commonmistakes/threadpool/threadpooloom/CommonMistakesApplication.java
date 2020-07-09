@@ -1,7 +1,8 @@
-package com.javalearning.demo.commonmistakes.threadpool.threadpoolmisuse;
+package com.javalearning.demo.commonmistakes.threadpool.threadpooloom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class CommonMistakesApplication {

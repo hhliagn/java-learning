@@ -1,9 +1,6 @@
 package com.javalearning.demo.commonmistakes.datetime.newdate;
 
-import com.javalearning.demo.commonmistakes.lock.lockscope.Data;
-
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Calendar;

@@ -17,15 +17,16 @@ public class LockGranularityController {
 
     private List<Integer> data = new ArrayList<>();
 
-    private void slow() {
+    private void slow(){
         try {
             TimeUnit.MILLISECONDS.sleep(10);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
-    @GetMapping("wrong")
-    public int wrong() {
+    @GetMapping("/wrong")
+    public int wrong(){
         long begin = System.currentTimeMillis();
         IntStream.rangeClosed(1, 1000).parallel().forEach(i -> {
             synchronized (data){
@@ -33,12 +34,12 @@ public class LockGranularityController {
                 data.add(i);
             }
         });
-        log.info("took: {}", System.currentTimeMillis() - begin);
+        log.info("took {}ms", System.currentTimeMillis() - begin );
         return data.size();
     }
 
-    @GetMapping("right")
-    public int right() {
+    @GetMapping("/right")
+    public int right(){
         long begin = System.currentTimeMillis();
         IntStream.rangeClosed(1, 1000).parallel().forEach(i -> {
             slow();
@@ -46,8 +47,7 @@ public class LockGranularityController {
                 data.add(i);
             }
         });
-        log.info("took: {}", System.currentTimeMillis() - begin);
+        log.info("took {}ms", System.currentTimeMillis() - begin );
         return data.size();
     }
-
 }

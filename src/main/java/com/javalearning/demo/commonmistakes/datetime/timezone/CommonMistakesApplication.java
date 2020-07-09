@@ -1,8 +1,5 @@
 package com.javalearning.demo.commonmistakes.datetime.timezone;
 
-import com.javalearning.demo.commonmistakes.lock.lockscope.Data;
-
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
