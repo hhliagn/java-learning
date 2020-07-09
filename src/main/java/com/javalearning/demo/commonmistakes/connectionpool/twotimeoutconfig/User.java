@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.connectionpool.datasource;
+package com.javalearning.demo.commonmistakes.connectionpool.twotimeoutconfig;
 
 import lombok.Data;
 

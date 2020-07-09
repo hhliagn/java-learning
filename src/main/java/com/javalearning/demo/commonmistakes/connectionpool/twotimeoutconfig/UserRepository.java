@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.connectionpool.datasource;
+package com.javalearning.demo.commonmistakes.connectionpool.twotimeoutconfig;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
