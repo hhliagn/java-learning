@@ -18,17 +18,23 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class JedisMisreuseController {
 
-    private static JedisPool jedisPool = new JedisPool("127.0.0.1", 6379);
+    private static JedisPoolConfig jedisPoolConfig = null;
+    private static JedisPool jedisPool = null;
+
+    static {
+        jedisPoolConfig = new JedisPoolConfig();
+        ////请求连接超时时间
+        jedisPoolConfig.setMaxWaitMillis(10000);
+        //连接超时时间
+        jedisPool = new JedisPool(jedisPoolConfig, "127.0.0.1", 6379, 5000);
+    }
 
     @PostConstruct
-    public void init() {
+    public void init(){
         try (Jedis jedis = new Jedis("127.0.0.1", 6379)) {
             Assert.isTrue("OK".equals(jedis.set("a", "1")), "set a = 1 return OK");
             Assert.isTrue("OK".equals(jedis.set("b", "2")), "set b = 2 return OK");
         }
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            jedisPool.close();
-        }));
     }
 
     @GetMapping("/wrong")
@@ -36,63 +42,40 @@ public class JedisMisreuseController {
         Jedis jedis = new Jedis("127.0.0.1", 6379);
         new Thread(() -> {
             for (int i = 0; i < 1000; i++) {
-                String result = jedis.get("a");
-                if (!"1".equals(result)) {
-                    log.warn("Expect a to be 1 but found {}", result);
-                    return;
-                }
+                check(jedis, "a", "1", "expect 1 but got : {}");
             }
         }).start();
         new Thread(() -> {
             for (int i = 0; i < 1000; i++) {
-                String result = jedis.get("b");
-                if (!"2".equals(result)) {
-                    log.warn("Expect b to be 2 but found {}", result);
-                    return;
-                }
+                check(jedis, "b", "2", "expect 2 but got : {}");
             }
         }).start();
         TimeUnit.SECONDS.sleep(5);
     }
 
     @GetMapping("/right")
-    public void right() throws InterruptedException {
+    public void right(){
 
         new Thread(() -> {
             try (Jedis jedis = jedisPool.getResource()) {
                 for (int i = 0; i < 1000; i++) {
-                    String result = jedis.get("a");
-                    if (!"1".equals(result)) {
-                        log.warn("Expect a to be 1 but found {}", result);
-                        return;
-                    }
+                    check(jedis, "a", "1", "expect 1 but got : {}");
                 }
             }
         }).start();
         new Thread(() -> {
-            try (Jedis jedis = jedisPool.getResource()) {
+            try (Jedis jedis = jedisPool.getResource()){
                 for (int i = 0; i < 1000; i++) {
-                    String result = jedis.get("b");
-                    if (!"2".equals(result)) {
-                        log.warn("Expect b to be 2 but found {}", result);
-                        return;
-                    }
+                    check(jedis, "b", "2", "expect 2 but got : {}");
                 }
             }
         }).start();
-        TimeUnit.SECONDS.sleep(5);
-
     }
 
-    @GetMapping("timeout")
-    public String timeout(@RequestParam("waittimeout") int waittimeout,
-                          @RequestParam("conntimeout") int conntimeout) {
-        JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(1);
-        config.setMaxWaitMillis(waittimeout);
-        try (JedisPool jedisPool = new JedisPool(config, "127.0.0.1", 6379, conntimeout);
-             Jedis jedis = jedisPool.getResource()) {
-            return jedis.set("test", "test");
+    private void check(Jedis jedis, String a, String s, String s2) {
+        String result = jedis.get(a);
+        if (!s.equalsIgnoreCase(result)) {
+            log.warn(s2, result);
         }
     }
 }
