@@ -5,12 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class CommonMistakesApplicationNoRetry {
+public class CommonMistakesApplication {
 
     public static void main(String[] args) {
 
-//        Utils.loadPropertySource(CommonMistakesApplicationNoRetry.class,"noretry-ribbon.properties");
-        SpringApplication.run(CommonMistakesApplicationNoRetry.class, args);
+//        Utils.loadPropertySource(CommonMistakesApplication.class,"default-ribbon.properties");
+        SpringApplication.run(CommonMistakesApplication.class, args);
     }
 }
 

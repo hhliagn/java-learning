@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.httpinvoke.feignandribbontimeout;
+package com.javalearning.demo.commonmistakes.httpinvoke.feignandribbontimout;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +12,22 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("feignandribbon")
 @Slf4j
-public class feignandclientController {
+public class FeignAndRibbonController {
 
     @Autowired
     private Client client;
 
     @GetMapping("client")
-    public void client(){
+    public void timeout() {
         long begin = System.currentTimeMillis();
-        try {
+        try{
             client.server();
-        } catch (Exception e) {
-            log.info("执行耗时：{}, 错误：{}", System.currentTimeMillis() - begin, e.getMessage());
+        } catch (Exception ex) {
+            log.warn("执行耗时：{}ms 错误：{}", System.currentTimeMillis() - begin, ex.getMessage());
         }
-
     }
 
-    @PostMapping("server")
+    @PostMapping("/server")
     public void server() throws InterruptedException {
         TimeUnit.MINUTES.sleep(10);
     }
