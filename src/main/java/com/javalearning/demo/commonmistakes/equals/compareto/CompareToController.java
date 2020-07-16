@@ -3,77 +3,76 @@ package com.javalearning.demo.commonmistakes.equals.compareto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.comparator.Comparators;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @Slf4j
 @RequestMapping("compareto")
 public class CompareToController {
 
-    @GetMapping("wrong")
+    @GetMapping("/wrong")
     public void wrong(){
-        List<Student> studentList = new ArrayList<>();
-        Student a = new Student(1, "liang");
-        Student b = new Student(2, "wang");
-        studentList.add(a);
-        studentList.add(b);
-        Student c = new Student(2, "liu");
-        log.info("index of c: {}", studentList.indexOf(c));
-        Collections.sort(studentList);
-        log.info("binary search c：{}", Collections.binarySearch(studentList, c));
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "zhang"));
+        students.add(new Student(2, "wang"));
+
+        Student li = new Student(2, "li");
+        int index1 = students.indexOf(li);
+        int index2 = Collections.binarySearch(students, li);
+
+        log.info("wrong - indexOf: {}", index1);
+        log.info("wrong - binarySearch: {}", index2);
     }
 
-    @GetMapping("right")
+    @GetMapping("/right")
     public void right(){
-        List<StudentRight> list = new ArrayList<>();
-        list.add(new StudentRight(1, "zhang"));
-        list.add(new StudentRight(2, "wang"));
-        StudentRight student = new StudentRight(2, "li");
+        List<StudentRight> students = new ArrayList<>();
+        students.add(new StudentRight(1, "zhang"));
+        students.add(new StudentRight(2, "wang"));
 
-        log.info("ArrayList.indexOf");
-        int index1 = list.indexOf(student);
-        Collections.sort(list);
-        log.info("Collections.binarySearch");
-        int index2 = Collections.binarySearch(list, student);
+        StudentRight li = new StudentRight(2, "li");
+        int index1 = students.indexOf(li);
+        int index2 = Collections.binarySearch(students, li);
 
-        log.info("index1 = " + index1);
-        log.info("index2 = " + index2);
+        log.info("right - indexOf: {}", index1);
+        log.info("right - binarySearch: {}", index2);
     }
 
+
+    @Data
     @AllArgsConstructor
-    class Student implements Comparable<Student> {
-        int id;
+    class Student implements Comparable<Student>{
+        int age;
         String name;
 
         @Override
-        public int compareTo(Student that) {
-            int compare = Integer.compare(id, that.id);
-            if (compare == 0){
-                log.info("this {} == that {}", this, that);
+        public int compareTo(Student other) {
+            int result = Integer.compare(age, other.age);
+            if (result == 0){
+               log.info("this {} == other {}", this, other);
             }
-            return compare;
+            return result;
         }
     }
 
-    @AllArgsConstructor
     @Data
+    @AllArgsConstructor
     class StudentRight implements Comparable<StudentRight>{
-        int id;
+
+        int age;
         String name;
 
         @Override
         public int compareTo(StudentRight other) {
             return Comparator.comparing(StudentRight::getName)
-                    .thenComparingInt(StudentRight::getId)
+                    .thenComparingInt(StudentRight::getAge)
                     .compare(this, other);
         }
     }
+
+
 }

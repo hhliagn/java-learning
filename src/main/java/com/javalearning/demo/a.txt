@@ -1,0 +1,110 @@
+{
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "order_id": 123464356,
+        "user_id": 1313673434,
+        "order_no": "2020070718264535970476",
+        "order_state": 4,
+        "order_state_text": null,
+        "order_type": "common",
+        "order_type_text": "普通单",
+        "payment": "balance",
+        "payment_detail": "0",
+        "pay_state": 3,
+        "amt_total": 1200,
+        "amt_goods": 1200,
+        "amt_logistics": 0,
+        "amt_discount": 0,
+        "amt_tax": 0,
+        "amt_paid": 1200,
+        "t_created": "2020-07-07 18:26:45",
+        "t_pay_expire": 1594119405,
+        "t_handled": "2020-07-07 18:27:43",
+        "t_state_changed": "2020-07-14 18:30:05",
+        "logistics_type": "none",
+        "logistic_code": null,
+        "remark": "",
+        "realname": null,
+        "id_card": null,
+        "username": "小南",
+        "phone": "13711027513",
+        "head": "https://wx.qlogo.cn/mmopen/vi_32/3NDn3c74ZfBfq7vICY2LMX0AdPwtvIM5rl8ygx4mIvibDYZo9QRIOf1X6a2G61vgupBZ2Abh8Yzzdn7A2ppmGUQ/132",
+        "wms": {
+            "state": "to_push",
+            "code": null,
+            "message": null,
+            "times": 1,
+            "last_time": null
+        },
+        "items": [
+            {
+                "id": null,
+                "order_id": 123464356,
+                "goods_id": 2041,
+                "goods_name": "虚拟商品测试001",
+                "customized_no": "7382121",
+                "spec_id": 2747,
+                "spec_name": "测试",
+                "goods_type": "self-run",
+                "price": 1200,
+                "amt_tax": null,
+                "amt_discount": 0,
+                "num": 1,
+                "release_num": null,
+                "owe_num": null,
+                "img": null,
+                "is_antifake": 0,
+                "spec_num_name": "",
+                "remark": ""
+            }
+        ],
+        "address": {
+            "addr_id": null,
+            "order_id": null,
+            "name": null,
+            "phone": null,
+            "province": null,
+            "city": null,
+            "county": null,
+            "detail": null,
+            "realname": null,
+            "id_card": null
+        },
+        "logistics": [
+            {
+                "type": null,
+                "code": null,
+                "no": null,
+                "msg": null,
+                "time": null
+            }
+        ],
+        "supplier_id": 24,
+        "repository_id": 38,
+        "supplier_name": "颜如玉供应商",
+        "repository_name": "广东发货仓",
+        "is_antifake": 0,
+        "is_binded": 0,
+        "is_agent": null,
+        "has_transferred": 0,
+        "is_transferring": 0,
+        "has_set_address": false,
+        "has_realname_pic": false,
+        "category": 1,
+        "virtual": {
+            "consumption_code": "",
+            "addr": {
+                "phone": "13711027513"
+            }
+        },
+        "pay_order": null,
+        "multiple_deliver_state": 0,
+        "shop_user_name": null,
+        "shop_user_phone": null,
+        "shop_user_head": null,
+        "shop_user_id": null,
+        "trefund_time": null,
+        "tpay_time": 1594117606
+    }
+}

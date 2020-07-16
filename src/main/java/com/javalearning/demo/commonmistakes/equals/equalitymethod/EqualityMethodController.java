@@ -1,7 +1,6 @@
 package com.javalearning.demo.commonmistakes.equals.equalitymethod;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,74 +8,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @RestController
 @Slf4j
 @RequestMapping("equalitymethod")
 public class EqualityMethodController {
 
-    @GetMapping("wrong")
+    @GetMapping("/wrong")
     public void wrong(){
         Point a = new Point(1, 2, "a");
         Point b = new Point(1, 2, "b");
         Point c = new Point(1, 2, "a");
-        log.info("a equals b ? {}", a.equals(b));
-        log.info("a equals c ? {}", a.equals(c));
+        log.info("a equals b {}", a.equals(b));
+        log.info("a equals c {}", a.equals(c));
     }
 
-
-    @GetMapping("wrong2")
+    @GetMapping("/wrong2")
     public void wrong2(){
         PointWrong a = new PointWrong(1,2,"a");
-        try {
-            log.info("a equals null, {}", a.equals(null));
-        } catch (Exception e) {
-            log.error(e.toString());
-        }
+        PointWrong b = new PointWrong(1,2,"a");
 
-        Object o = new Object();
-        try {
-            log.info("a equals an object, {}", a.equals(o));
-        } catch (Exception e) {
-            log.error(e.toString());
-        }
+        log.info("a equals b {}", a.equals(b));
 
-        PointWrong b = new PointWrong(1,2,"b");
-        log.info("a equals b, {}", a.equals(b));
+        Set<PointWrong> set = new HashSet<>();
+        set.add(a);
 
-
-        HashSet<PointWrong> pointWrongs = new HashSet<>();
-        pointWrongs.add(a);
-        log.info("pointWrongs contains b? {}", pointWrongs.contains(b));
-
+        log.info("set contains a {}", set.contains(b));
     }
 
-    @GetMapping("right")
+    @GetMapping("/right")
     public void right(){
         PointRight a = new PointRight(1,2,"a");
-        try {
-            log.info("a equals null, {}", a.equals(null));
-        } catch (Exception e) {
-            log.error(e.toString());
-        }
+        PointRight b = new PointRight(1,2,"a");
 
-        Object o = new Object();
-        try {
-            log.info("a equals an object, {}", a.equals(o));
-        } catch (Exception e) {
-            log.error(e.toString());
-        }
+        log.info("a equals b {}", a.equals(b));
 
-        PointRight b = new PointRight(1,2,"b");
-        log.info("a equals b, {}", a.equals(b));
+        Set<PointRight> set = new HashSet<>();
+        set.add(a);
 
-
-        HashSet<PointRight> pointWrongs = new HashSet<>();
-        pointWrongs.add(a);
-        log.info("pointWrongs contains b? {}", pointWrongs.contains(b));
-
+        log.info("set contains a {}", set.contains(b));
     }
-
 
     @AllArgsConstructor
     class Point{
@@ -93,8 +65,8 @@ public class EqualityMethodController {
 
         @Override
         public boolean equals(Object obj) {
-            PointWrong that = (PointWrong) obj;
-            return x == that.x && y == that.y;
+            PointWrong o = (PointWrong) obj;
+            return o.x == x && o.y == y;
         }
     }
 
@@ -105,16 +77,16 @@ public class EqualityMethodController {
         String desc;
 
         @Override
-        public boolean equals(Object obj) {
-            if (obj == null) return false;
-            if (obj.getClass() != this.getClass()) return false;
-            PointRight that = (PointRight) obj;
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            PointRight that = (PointRight) o;
             return x == that.x && y == that.y;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(x,y);
+            return Objects.hash(x, y);
         }
     }
 }

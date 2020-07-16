@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.transaction.transactionproxyfail;
+package com.javalearning.demo.commonmistakes.transaction.transactionrollbackfailed;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CommonMistakesApplication {
 
     public static void main(String[] args) {
-        //System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, ".");
-
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 }

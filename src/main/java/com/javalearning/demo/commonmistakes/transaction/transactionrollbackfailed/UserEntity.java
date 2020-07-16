@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.transaction.transactionproxyfail;
+package com.javalearning.demo.commonmistakes.transaction.transactionrollbackfailed;
 
 import lombok.Data;
 

@@ -15,16 +15,27 @@ public class SubUserService {
     private UserRepository userRepository;
 
     @Transactional
-    public void createSubUserWithExceptionWrong(UserEntity userEntity) {
+    public void createSubUserWithExceptionWrong(UserEntity entity) {
         log.info("createSubUserWithExceptionWrong start");
-        userRepository.save(userEntity);
+        userRepository.save(entity);
         throw new RuntimeException("invalid status");
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void createSubUserWithExceptionRight(UserEntity userEntity) {
+    public void createSubUserWithExceptionRight(UserEntity entity) {
         log.info("createSubUserWithExceptionRight start");
-        userRepository.save(userEntity);
+        userRepository.save(entity);
         throw new RuntimeException("invalid status");
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void createSubUser() {
+        userRepository.save(new UserEntity("sub user"));
+        int i = 1 / 0;
+//        try {
+//            int i = 1 / 0;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

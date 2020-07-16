@@ -18,26 +18,26 @@ public class TransactionPropagationController {
     @GetMapping("wrong")
     public int wrong(@RequestParam("name") String name) {
         try {
-            userService.createUserWrong(new UserEntity(name));
+            userService.createUserWrong();
         } catch (Exception ex) {
-            log.error("createUserWrong failed, reason: {}", ex.getMessage());
+            log.error("createUserWrong failed, reason:{}", ex.getMessage());
         }
-        return userService.getUserCount(name);
+        return 1;
     }
 
-    @GetMapping("wrong2")
-    public int wrong2(@RequestParam("name") String name) {
-        try {
-            userService.createUserWrong2(new UserEntity(name));
-        } catch (Exception ex) {
-            log.error("createUserWrong2 failed, reason:{}", ex.getMessage(), ex);
-        }
-        return userService.getUserCount(name);
-    }
-
-    @GetMapping("right")
-    public int right(@RequestParam("name") String name) {
-        userService.createUserRight(new UserEntity(name));
-        return userService.getUserCount(name);
-    }
+//    @GetMapping("wrong2")
+//    public int wrong2(@RequestParam("name") String name) {
+//        try {
+//            userService.createUserWrong2(new UserEntity(name));
+//        } catch (Exception ex) {
+//            log.error("createUserWrong2 failed, reason:{}", ex.getMessage(), ex);
+//        }
+//        return userService.getUserCount(name);
+//    }
+//
+//    @GetMapping("right")
+//    public int right(@RequestParam("name") String name) {
+//        userService.createUserRight(new UserEntity(name));
+//        return userService.getUserCount(name);
+//    }
 }

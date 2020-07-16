@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.transaction.transactionrollbackfail;
+package com.javalearning.demo.commonmistakes.transaction.transactionrollbackfailed;
 
 
 import lombok.extern.slf4j.Slf4j;

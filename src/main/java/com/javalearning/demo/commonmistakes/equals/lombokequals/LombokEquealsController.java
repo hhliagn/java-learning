@@ -1,5 +1,6 @@
 package com.javalearning.demo.commonmistakes.equals.lombokequals;
 
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,39 +14,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("lombokequals")
 public class LombokEquealsController {
 
-    @GetMapping("test1")
-    public void test1(){
-        Person p1 = new Person("001", "myx");
-        Person p2 = new Person("001", "myz");
-        log.info("p1 equals p2? {}", p1.equals(p2));
+    @GetMapping("/wrong")
+    public void wrong(){
+        Person person1 = new Person("aaa", 111);
+        Person person2 = new Person("bbb", 111);
+        log.info("p1 equals p2 {}", person1.equals(person2));
     }
 
-    @GetMapping("test2")
-    public void test2(){
-        Employee p1 = new Employee("001", "myx", "baidu.com");
-        Employee p2 = new Employee("002", "myz", "baidu.com");
-        log.info("p1 equals p2? {}", p1.equals(p2));
+    @GetMapping("/right")
+    public void right(){
+        Employee e1 = new Employee("zhang", 111, "bjk.com");
+        Employee e2 = new Employee("wang", 222, "bjk.com");
+        log.info("e1 equals e2 {}", e1.equals(e2));
     }
 
     @Data
     class Person{
-        String identity;
         @EqualsAndHashCode.Exclude
         String name;
+        Integer identity;
 
-        public Person(String identity, String name){
-            this.identity = identity;
+        Person(String name, Integer identity){
             this.name = name;
+            this.identity = identity;
         }
     }
 
     @Data
     @EqualsAndHashCode(callSuper = true)
     class Employee extends Person{
-        private String company;
+        String company;
 
-        public Employee(String identity, String name, String company) {
-            super(identity, name);
+        public Employee(String name, Integer identity, String company) {
+            super(name, identity);
             this.company = company;
         }
     }

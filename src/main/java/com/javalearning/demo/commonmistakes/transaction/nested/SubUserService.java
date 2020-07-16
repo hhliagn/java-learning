@@ -14,7 +14,7 @@ public class SubUserService {
     @Autowired
     private UserDataMapper userDataMapper;
 
-    //对比使用REQUIRES_NEW 可以正常提交 ，NESTED 会因为主事务的回滚而失败
+    //比较切换为REQUIRES_NEW，这里的createSubUser可以插入数据成功
     @Transactional(propagation = Propagation.NESTED)
     public void createSubUser(String name) {
         userDataMapper.insert(name, "sub");

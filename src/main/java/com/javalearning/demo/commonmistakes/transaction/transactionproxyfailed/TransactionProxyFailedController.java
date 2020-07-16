@@ -1,4 +1,4 @@
-package com.javalearning.demo.commonmistakes.transaction.transactionproxyfail;
+package com.javalearning.demo.commonmistakes.transaction.transactionproxyfailed;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +15,32 @@ public class TransactionProxyFailedController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("wrong1")
-    public int wrong1(@RequestParam("name") String name) {
-        return userService.createUserWrong1(name);
+    @GetMapping("wrong")
+    public int wrong1() {
+        userService.createUserWrong();
+        return 1;
     }
 
     @GetMapping("wrong2")
-    public int wrong2(@RequestParam("name") String name) {
-        return userService.createUserWrong2(name);
+    public int wrong2() {
+        userService.createUserWrong2();
+        return 1;
     }
 
-    @GetMapping("wrong3")
-    public int wrong3(@RequestParam("name") String name) {
-        return userService.createUserWrong3(name);
-    }
-
-    @GetMapping("right1")
-    public int right1(@RequestParam("name") String name) {
-        return userService.createUserRight(name);
-    }
+//    @GetMapping("wrong2")
+//    public int wrong2(@RequestParam("name") String name) {
+//        return userService.createUserWrong2(name);
+//    }
+//
+//    @GetMapping("wrong3")
+//    public int wrong3(@RequestParam("name") String name) {
+//        return userService.createUserWrong3(name);
+//    }
+//
+//    @GetMapping("right1")
+//    public int right1(@RequestParam("name") String name) {
+//        return userService.createUserRight(name);
+//    }
 //
 //    @GetMapping("right2")
 //    public int right2(@RequestParam("name") String name) {
