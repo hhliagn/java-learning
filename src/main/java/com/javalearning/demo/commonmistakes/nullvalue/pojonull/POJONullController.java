@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Slf4j
 @RequestMapping("pojonull")
 @RestController
@@ -35,29 +37,23 @@ public class POJONullController {
         return userRepository.save(user);
     }
 
-    @PostMapping("right")
-    public UserEntity right(@RequestBody UserDto userDto){
-        if (userDto.getId() == null){
-            throw new IllegalArgumentException("id 不能为空");
+    @PostMapping("/right")
+    public UserEntity right(@RequestBody UserDto userDto) {
+        if (userDto == null || userDto.getId() == null) {
+            return null;
         }
 
-//        UserEntity userEntity = userEntityRepository.findById(userDto.getId())
-//                .orElseThrow(() -> new IllegalArgumentException("对象为 null"));
-
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(userDto.getId());
-
-        if (userDto.getName() != null){
+        UserEntity userEntity
+                = userEntityRepository.findById(userDto.getId())
+                .orElseThrow(() -> new IllegalArgumentException("用户不存在"));
+        if (userDto.getName() != null) {
             userEntity.setName(userDto.getName().orElse(""));
         }
-
-        userEntity.setNickname("guest" + userEntity.getName());
-
-        if (userDto.getAge() != null){
-            userEntity.setAge(userDto.getAge().orElseThrow(()->new IllegalArgumentException("年龄不能为null")));
+        if (userDto.getAge() != null) {
+            userEntity.setAge(userDto.getAge().orElseThrow(() -> new IllegalArgumentException("年龄不能为空")));
         }
-
+        userEntity.setNickname("guest" + userEntity.getName());
         return userEntityRepository.save(userEntity);
-    }
 
+    }
 }

@@ -167,7 +167,6 @@
             <artifactId>junit</artifactId>
         </dependency>
 
-
         <!--<dependency>-->
             <!--<groupId>cn.codesheep</groupId>-->
             <!--<artifactId>id-spring-boot-starter</artifactId>-->
@@ -178,12 +177,6 @@
             <artifactId>testng</artifactId>
             <version>6.13.1</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.gavlyukovskiy</groupId>
-            <artifactId>p6spy-spring-boot-starter</artifactId>
-            <version>1.6.1</version>
         </dependency>
 
         <!--swagger export-->
