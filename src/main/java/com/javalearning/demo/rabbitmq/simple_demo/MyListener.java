@@ -1,6 +1,6 @@
-package com.javalearning.demo.rabbitmq;
+package com.javalearning.demo.rabbitmq.simple_demo;
 
-import com.javalearning.demo.rabbitmq.pojo.User;
+import com.javalearning.demo.rabbitmq.simple_demo.pojo.User;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
 

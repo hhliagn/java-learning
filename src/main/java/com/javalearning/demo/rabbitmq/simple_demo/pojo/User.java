@@ -1,4 +1,4 @@
-package com.javalearning.demo.rabbitmq.pojo;
+package com.javalearning.demo.rabbitmq.simple_demo.pojo;
 
 import lombok.Data;
 

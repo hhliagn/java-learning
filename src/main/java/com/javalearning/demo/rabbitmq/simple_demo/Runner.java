@@ -1,6 +1,6 @@
-package com.javalearning.demo.rabbitmq;
+package com.javalearning.demo.rabbitmq.simple_demo;
 
-import com.javalearning.demo.rabbitmq.pojo.User;
+import com.javalearning.demo.rabbitmq.simple_demo.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
