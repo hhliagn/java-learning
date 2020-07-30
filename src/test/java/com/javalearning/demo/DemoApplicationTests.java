@@ -1,6 +1,5 @@
 package com.javalearning.demo;
 
-import com.javalearning.demo.rabbitmq.RabbitMQApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.AmqpConnectException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
