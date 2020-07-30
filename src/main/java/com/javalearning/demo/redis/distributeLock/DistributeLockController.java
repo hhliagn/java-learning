@@ -16,6 +16,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * redisTemplate + redisson 分布式锁 + 双重验证（限制多个进程并发数为1）
+ */
 @Slf4j
 @RequestMapping("distributeLock")
 @RestController

@@ -1,4 +1,4 @@
-package com.javalearning.demo.redis.cachepenetration;
+package com.javalearning.demo.redis.cache_xuebeng;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

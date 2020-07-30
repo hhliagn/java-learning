@@ -1,4 +1,4 @@
-package com.javalearning.demo.redis.cacheconcurrent;
+package com.javalearning.demo.redis.cache_jichuang;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
