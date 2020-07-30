@@ -1,6 +1,5 @@
 package com.javalearning.demo.redis.springDataRedis.controller;
 
-import com.javalearning.demo.redis.springDataRedis.service.SpringCacheEvictService;
 import lombok.extern.slf4j.Slf4j;
 import com.javalearning.demo.redis.springDataRedis.service.SpringRedisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,6 @@ public class SpringRedisContoller {
     @Autowired
     private SpringRedisService springRedisService;
 
-    @Autowired
-    private SpringCacheEvictService springCacheEvictService;
-
     @GetMapping("/cache")
     public String cache(@RequestParam Integer companyId, @RequestParam Integer orderId){
         return springRedisService.getData(companyId, orderId);
@@ -33,12 +29,12 @@ public class SpringRedisContoller {
 
     @GetMapping("/delete")
     public void deleteCache(){
-        springCacheEvictService.deleteCache();
+        springRedisService.deleteCache();
     }
 
     @GetMapping("/delete2")
     public void deleteCache2(){
-        springCacheEvictService.deleteCache2();
+        springRedisService.deleteCache2();
     }
 
 
