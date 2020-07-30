@@ -24,6 +24,7 @@ public class CommonMistakesApplication {
      * 3. @Cacheable(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")
      * 4. @CachePut(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")
      * 5. @CacheEvict(value = "order_info", allEntries = true)
+     * 6. 如果是对象，可以用 #p0.companyId, #p0.userId
      *
      * 参考：https://segmentfault.com/a/1190000023040110
      */
