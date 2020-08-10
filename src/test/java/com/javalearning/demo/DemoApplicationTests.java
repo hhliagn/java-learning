@@ -20,13 +20,14 @@ class DemoApplicationTests {
 
     @Test
     public void test() throws Exception {
-        try {
-            rabbitTemplate.convertAndSend("any-queue",
-                    "Hello from RabbitMQ!");
-            throw new IOException();
-        }
-        catch (AmqpConnectException e) {
-            // ignore - rabbit is not running
-        }
+//        try {
+//            rabbitTemplate.convertAndSend("any-queue",
+//                    "Hello from RabbitMQ!");
+//            throw new IOException();
+//        }
+//        catch (AmqpConnectException e) {
+//            // ignore - rabbit is not running
+//        }
+        System.out.println("test maven");
     }
 }
