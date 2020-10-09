@@ -2,7 +2,6 @@ package com.javalearning.demo.rabbitmq.deadletter2;
 
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
-import tech.rongxin.oryx.msg.order.OrderExchange;
 
 import java.util.Date;
 

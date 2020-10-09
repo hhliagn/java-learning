@@ -17,7 +17,7 @@ public class TestController {
         TestObjectMsg testObjectMsg = new TestObjectMsg();
         testObjectMsg.setName("my-name");
         testObjectMsg.setAge(10);
-        testObjectProducer.publish(testObjectMsg);
+//        testObjectProducer.publish(testObjectMsg);
         return "OK";
     }
 }
