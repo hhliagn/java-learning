@@ -6,7 +6,7 @@ import java.util.Date;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest
-public class OryxOrderApplicationTests {
+public class MyTest {
 
     @Test
     public void testMyLabel(){
