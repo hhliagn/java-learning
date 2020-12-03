@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -28,6 +29,8 @@ import java.util.*;
  * @date2019/11/22 14:49
  */
 public class ExcelUtil {
+
+    private static SimpleDateFormat DATEFORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static int sheetsize = 10000;//每一页10000条数据
 
@@ -682,9 +685,8 @@ public class ExcelUtil {
         } else if (property instanceof BigDecimal) {
             cell.setCellValue(((BigDecimal) property).doubleValue());
         } else if (property instanceof Date) {
-//					DataFormat format = wb.createDataFormat();
-//					style.setDataFormat(format.getFormat("yyyy-MM-dd"));
-            cell.setCellValue((Date) property);
+            String dateValue = DATEFORMATTER.format(property);
+            cell.setCellValue(dateValue);
         } else {
             cell.setCellValue(property.toString());
         }
