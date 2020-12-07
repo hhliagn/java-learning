@@ -48,7 +48,7 @@ public class Main {
             orderInfos.add(orderInfo);
         }
 
-        Workbook wb = ExcelUtil.export(orderInfos, OrderInfo.class, false);
+        Workbook wb = ExcelUtil.export(orderInfos, OrderInfo.class, true);
         ExcelUtil.exportToLocal(wb, "导出test.xlsx");
         System.out.println("Done!");
     }
