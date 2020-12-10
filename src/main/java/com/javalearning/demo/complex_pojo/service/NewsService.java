@@ -1,10 +1,10 @@
-//package com.javalearning.demo.complex_pojo.service;
+//package com.javalearning.demo1.complex_pojo.service;
 //
-//import com.javalearning.demo.complex_pojo.bean.New;
-//import com.javalearning.demo.complex_pojo.bean.News;
-//import com.javalearning.demo.complex_pojo.bean.NewsPojo;
-//import com.javalearning.demo.complex_pojo.helper.SerializeHelper;
-//import com.javalearning.demo.complex_pojo.mapper.NewsMapper;
+//import com.javalearning.demo1.complex_pojo.bean.New;
+//import com.javalearning.demo1.complex_pojo.bean.News;
+//import com.javalearning.demo1.complex_pojo.bean.NewsPojo;
+//import com.javalearning.demo1.complex_pojo.helper.SerializeHelper;
+//import com.javalearning.demo1.complex_pojo.mapper.NewsMapper;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
 //

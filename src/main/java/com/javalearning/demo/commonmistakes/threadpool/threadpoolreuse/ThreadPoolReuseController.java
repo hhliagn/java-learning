@@ -60,7 +60,7 @@ public class ThreadPoolReuseController {
                 10, 50,
                 2, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(1000),
-                new ThreadFactoryBuilder().setNameFormat("demo-threadpool-%d").get());
+                new ThreadFactoryBuilder().setNameFormat("demo1-threadpool-%d").get());
 
         public static ThreadPoolExecutor getThreadPool() {
             return (ThreadPoolExecutor) Executors.newCachedThreadPool();

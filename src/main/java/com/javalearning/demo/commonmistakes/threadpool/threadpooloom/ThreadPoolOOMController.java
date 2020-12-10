@@ -76,7 +76,7 @@ public class ThreadPoolOOMController {
                 2, 5,
                 5, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(10),
-                new ThreadFactoryBuilder().setNameFormat("demo-Thread-%").get(),
+                new ThreadFactoryBuilder().setNameFormat("demo1-Thread-%").get(),
                 new ThreadPoolExecutor.AbortPolicy());
         //创建线程池马上启动所有核心线程
         threadPool.prestartAllCoreThreads();
@@ -122,7 +122,7 @@ public class ThreadPoolOOMController {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
                 2, 5,
                 5, TimeUnit.SECONDS,
-                queue, new ThreadFactoryBuilder().setNameFormat("demo-threadpool-%d").get(),
+                queue, new ThreadFactoryBuilder().setNameFormat("demo1-threadpool-%d").get(),
                 (r, executor) -> {
             try {
                 //executor.getQueue().put(r);

@@ -65,7 +65,7 @@ public class CommonMistakesApplication {
                 e.printStackTrace();
             }
         });
-        Files.write(Paths.get("demo.txt"),
+        Files.write(Paths.get("demo1.txt"),
                 IntStream.rangeClosed(1, 10).mapToObj(i -> UUID.randomUUID().toString()).collect(Collectors.toList())
                 , UTF_8, CREATE, TRUNCATE_EXISTING);
     }
@@ -76,7 +76,7 @@ public class CommonMistakesApplication {
         AtomicLong atomicLong = new AtomicLong();
         IntStream.rangeClosed(1, 1000000).forEach(i -> {
             try {
-                Files.lines(Paths.get("demo.txt")).forEach(line -> atomicLong.incrementAndGet());
+                Files.lines(Paths.get("demo1.txt")).forEach(line -> atomicLong.incrementAndGet());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -89,7 +89,7 @@ public class CommonMistakesApplication {
         //https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
         LongAdder longAdder = new LongAdder();
         IntStream.rangeClosed(1, 1000000).forEach(i -> {
-            try (Stream<String> lines = Files.lines(Paths.get("demo.txt"))){
+            try (Stream<String> lines = Files.lines(Paths.get("demo1.txt"))){
                 lines.forEach(line -> longAdder.increment());
             } catch (IOException e) {
                 e.printStackTrace();

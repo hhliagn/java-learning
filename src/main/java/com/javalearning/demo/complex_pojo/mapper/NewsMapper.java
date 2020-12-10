@@ -1,7 +1,7 @@
-//package com.javalearning.demo.complex_pojo.mapper;
+//package com.javalearning.demo1.complex_pojo.mapper;
 //
-//import com.javalearning.demo.complex_pojo.bean.News;
-//import com.javalearning.demo.complex_pojo.bean.NewsExample;
+//import com.javalearning.demo1.complex_pojo.bean.News;
+//import com.javalearning.demo1.complex_pojo.bean.NewsExample;
 //import java.util.List;
 //import org.apache.ibatis.annotations.Param;
 //

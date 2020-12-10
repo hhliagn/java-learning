@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 public class CommonMistakesApplication {
 
     public static void main(String[] args) {
-//        Utils.loadPropertySource(CommonMistakesApplication.class, "com/javalearning/demo/commonmistakes/serialization/jsonignoreproperties/jackson.properties");
+//        Utils.loadPropertySource(CommonMistakesApplication.class, "com/javalearning/demo1/commonmistakes/serialization/jsonignoreproperties/jackson.properties");
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 

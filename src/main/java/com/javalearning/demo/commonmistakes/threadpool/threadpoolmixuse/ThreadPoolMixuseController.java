@@ -29,7 +29,7 @@ public class ThreadPoolMixuseController {
             2, 2,
             2, TimeUnit.SECONDS,
             new ArrayBlockingQueue<>(10),
-            new ThreadFactoryBuilder().setNameFormat("demo-threadpool-%d").get(),
+            new ThreadFactoryBuilder().setNameFormat("demo1-threadpool-%d").get(),
             new ThreadPoolExecutor.CallerRunsPolicy()
     );
 
@@ -37,7 +37,7 @@ public class ThreadPoolMixuseController {
             200, 200,
             5, TimeUnit.SECONDS,
             new ArrayBlockingQueue<>(100),
-            new ThreadFactoryBuilder().setNameFormat("demo-threadpool-%d").get()
+            new ThreadFactoryBuilder().setNameFormat("demo1-threadpool-%d").get()
     );
 
     private void printStats(ThreadPoolExecutor threadPool) {
@@ -79,7 +79,7 @@ public class ThreadPoolMixuseController {
             while (true) {
                 threadPool.execute(() -> {
                     try {
-                        Files.write(Paths.get("demo.txt"), Collections.singletonList(LocalTime.now().toString() + ":" + payload), UTF_8, CREATE, TRUNCATE_EXISTING);
+                        Files.write(Paths.get("demo1.txt"), Collections.singletonList(LocalTime.now().toString() + ":" + payload), UTF_8, CREATE, TRUNCATE_EXISTING);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

@@ -1,7 +1,7 @@
-//package com.javalearning.demo.complex_pojo.controller;
+//package com.javalearning.demo1.complex_pojo.controller;
 //
-//import com.javalearning.demo.complex_pojo.bean.News;
-//import com.javalearning.demo.complex_pojo.service.NewsService;
+//import com.javalearning.demo1.complex_pojo.bean.News;
+//import com.javalearning.demo1.complex_pojo.service.NewsService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
