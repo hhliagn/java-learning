@@ -1,4 +1,4 @@
-package com.javalearning.demo.concurrency.thread_pool.split;
+package com.javalearning.demo.concurrency.thread_pool.split_task;
 
 import lombok.extern.slf4j.Slf4j;
 
