@@ -35,8 +35,7 @@ public class ExcelUtil {
     static int sheetsize = 10000;//每一页10000条数据
 
 
-    public static <T> void listToExecl(Integer companyId, Integer userId, List<T> data,
-                                       Map<String, String> fields) throws Exception {
+    public static <T> void listToExecl(List<T> data, Map<String, String> fields) throws Exception {
         XSSFWorkbook workbook = new XSSFWorkbook();
         // 如果导入数据为空，则抛出异常
         if (CollectionUtils.isEmpty(data)) {
@@ -88,7 +87,7 @@ public class ExcelUtil {
                 rownum++;
             }
         }
-        String localFilePath = getFileName(companyId, userId);
+        String localFilePath = getFileName();
         FileOutputStream out = new FileOutputStream(localFilePath);
         // 将创建好的数据写入输出流
         workbook.write(out);
@@ -345,8 +344,8 @@ public class ExcelUtil {
     }
 
 
-    private static String getFileName(Integer companyId, Integer userId) {
-        return "订单导出" + DateUtils.formatDate(new Date()) + "-" + companyId + "" + userId + "-" + ".xlsx";
+    private static String getFileName() {
+        return "订单导出" + DateUtils.formatDate(new Date()) + ".xlsx";
     }
 
 
