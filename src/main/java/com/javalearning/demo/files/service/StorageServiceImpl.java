@@ -1,6 +1,6 @@
-package com.javalearning.demo.Files.service;
+package com.javalearning.demo.files.service;
 
-import com.javalearning.demo.Files.config.StorageProperties;
+import com.javalearning.demo.files.config.StorageProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -9,7 +9,6 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;

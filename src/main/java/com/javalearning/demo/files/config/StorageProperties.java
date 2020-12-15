@@ -1,6 +1,5 @@
-package com.javalearning.demo.Files.config;
+package com.javalearning.demo.files.config;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("service")

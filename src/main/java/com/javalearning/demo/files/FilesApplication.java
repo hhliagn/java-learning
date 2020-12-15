@@ -1,6 +1,6 @@
-package com.javalearning.demo.Files;
+package com.javalearning.demo.files;
 
-import com.javalearning.demo.Files.config.StorageProperties;
+import com.javalearning.demo.files.config.StorageProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

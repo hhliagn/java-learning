@@ -1,4 +1,4 @@
-package com.javalearning.demo.Files.service;
+package com.javalearning.demo.files.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

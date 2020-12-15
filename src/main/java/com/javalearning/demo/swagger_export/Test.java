@@ -24,7 +24,7 @@ public class Test {
         Swagger2MarkupConverter.from(new URL("http://oryx-order.test3.rongxin.tech/v2/api-docs"))
                 .withConfig(config)
                 .build()
-                .toFolder(Paths.get("D:\\Files\\youxin\\"));
+                .toFolder(Paths.get("D:\\files\\youxin\\"));
 
 //        Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
 //                .withMarkupLanguage(MarkupLanguage.MARKDOWN)
@@ -37,6 +37,6 @@ public class Test {
 //        Swagger2MarkupConverter.from(new URL("http://oryx-order.test3.rongxin.tech/v2/api-docs"))
 //                .withConfig(config)
 //                .build()
-//                .toFolder(Paths.get("D:\\Files\\youxin\\"));
+//                .toFolder(Paths.get("D:\\files\\youxin\\"));
     }
 }

@@ -1,6 +1,6 @@
-package com.javalearning.demo.Files.controller;
+package com.javalearning.demo.files.controller;
 
-import com.javalearning.demo.Files.service.StorageService;
+import com.javalearning.demo.files.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
