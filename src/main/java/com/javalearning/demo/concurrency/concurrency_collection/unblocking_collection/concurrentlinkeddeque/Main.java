@@ -1,14 +1,11 @@
-package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.ConcurrentLinkedDeque;
+package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.concurrentlinkeddeque;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class Main {
 
     public static void main(String[] args) {
-        // ConcurrentLinkedDeque: 并发操作同一个list并不会发生数据错误
+        // concurrentlinkeddeque: 并发操作同一个list并不会发生数据错误
         ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
 
         Thread[] threads = new Thread[100];
@@ -56,7 +53,7 @@ public class Main {
          * Main: 100 PollTask have been launched.
          * Main: Size of the List: 566654
          *
-         * ConcurrentLinkedDeque:
+         * concurrentlinkeddeque:
          * Main: 100 AddTask have been launched.
          * Main: Size of the List: 1000000
          * Main: 100 PollTask have been launched.

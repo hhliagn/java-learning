@@ -1,8 +1,7 @@
-package com.javalearning.demo.concurrency.concurrency_collection.blocking_collection.LinkedBlockingDeque;
+package com.javalearning.demo.concurrency.concurrency_collection.blocking_collection.linkedblockingdeque;
 
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Client implements Runnable {

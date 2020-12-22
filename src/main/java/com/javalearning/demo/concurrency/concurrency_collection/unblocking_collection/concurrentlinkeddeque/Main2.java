@@ -1,4 +1,4 @@
-package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.ConcurrentLinkedDeque;
+package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.concurrentlinkeddeque;
 
 public class Main2 {
 

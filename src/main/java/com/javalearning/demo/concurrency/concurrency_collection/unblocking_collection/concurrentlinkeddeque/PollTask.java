@@ -1,8 +1,5 @@
-package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.ConcurrentLinkedDeque;
+package com.javalearning.demo.concurrency.concurrency_collection.unblocking_collection.concurrentlinkeddeque;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class PollTask implements Runnable{
