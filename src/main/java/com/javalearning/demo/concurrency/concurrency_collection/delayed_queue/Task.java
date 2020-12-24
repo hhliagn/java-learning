@@ -20,10 +20,12 @@ public class Task implements Runnable {
 
         delay.setTime(now.getTime() + (id * 1000));
         System.out.printf("Thread %s : %s\n", id, delay);
+        Event event = new Event(delay);
+        queue.add(event);
 
-        for (int i = 0; i < 100; i++) {
-            Event event = new Event(delay);
-            queue.add(event);
-        }
+//        for (int i = 0; i < 100; i++) {
+//            Event event = new Event(delay);
+//            queue.add(event);
+//        }
     }
 }

@@ -15,7 +15,7 @@ public class Event implements Delayed {
     @Override
     public long getDelay(TimeUnit unit) {
         Date now = new Date();
-        long diff = now.getTime() - startDate.getTime();
+        long diff = startDate.getTime() - now.getTime();
         return unit.convert(diff, TimeUnit.MILLISECONDS);
     }
 
