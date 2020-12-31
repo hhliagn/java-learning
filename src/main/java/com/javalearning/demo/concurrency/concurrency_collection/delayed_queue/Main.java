@@ -8,7 +8,8 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // 每隔自定义的时间处理队列中的元素，而且是并发安全的。
+        // 队列中的元素按过期时间排序，早过期的先出列，而且这个列表是并发安全的。
+        // 适用于要自定义时间处理任务的场景
         DelayQueue<Event> queue = new DelayQueue<>();
 
         Thread[] threads = new Thread[5];
