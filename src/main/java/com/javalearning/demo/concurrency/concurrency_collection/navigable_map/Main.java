@@ -45,6 +45,9 @@ public class Main {
         System.out.printf("Main: Submap from A1996 to B1002: \n");
         ConcurrentNavigableMap<String, Contact> subMap = map.subMap("A1996", "B1002");
 
+
+        // test merge
+
         do {
             element = subMap.pollFirstEntry();
             if (element != null){
