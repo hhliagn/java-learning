@@ -55,7 +55,7 @@ public class OrderInfo {
 //            return "";
 //        }
 //
-//        StringBuilder stringBuilder = new StringBuilder();
+//        string_builder stringBuilder = new string_builder();
 //        for (OrderItem item : items) {
 //            stringBuilder.append("[");
 //            stringBuilder.append(item.getGoodsName());

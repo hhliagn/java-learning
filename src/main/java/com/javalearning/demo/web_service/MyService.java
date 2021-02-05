@@ -1,4 +1,4 @@
-package com.javalearning.demo.WebService;
+package com.javalearning.demo.web_service;
 
 import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
 import org.springframework.stereotype.Service;

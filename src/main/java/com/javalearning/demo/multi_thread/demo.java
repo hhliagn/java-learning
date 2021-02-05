@@ -1,4 +1,4 @@
-package com.javalearning.demo.multiThread;
+package com.javalearning.demo.multi_thread;
 
 public class demo {
     private static long counter = 0;

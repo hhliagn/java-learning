@@ -1,4 +1,4 @@
-package com.javalearning.demo.restTemplate;
+package com.javalearning.demo.rest_template;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

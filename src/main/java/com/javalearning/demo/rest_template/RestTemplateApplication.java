@@ -1,4 +1,4 @@
-package com.javalearning.demo.restTemplate;
+package com.javalearning.demo.rest_template;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

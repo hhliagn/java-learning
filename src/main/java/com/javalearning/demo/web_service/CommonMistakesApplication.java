@@ -1,4 +1,4 @@
-package com.javalearning.demo.WebService;
+package com.javalearning.demo.web_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

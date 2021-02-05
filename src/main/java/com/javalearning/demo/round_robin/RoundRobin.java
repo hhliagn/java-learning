@@ -1,4 +1,4 @@
-package com.javalearning.demo.roundrobin;
+package com.javalearning.demo.round_robin;
 
 import java.util.ArrayList;
 import java.util.Map;

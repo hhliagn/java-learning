@@ -1,4 +1,4 @@
-package com.javalearning.demo.StringBuilder;
+package com.javalearning.demo.string_builder;
 
 public class ThreadSafe {
 
