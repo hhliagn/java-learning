@@ -1,4 +1,4 @@
-package com.javalearning.demo.design_pattern.bridge.demo2;
+package com.javalearning.demo.design_pattern.bridge;
 
 public class SimpleAccount extends AbstractAccount {
 

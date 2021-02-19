@@ -1,4 +1,4 @@
-package com.javalearning.demo.design_pattern.bridge.demo2;
+package com.javalearning.demo.design_pattern.bridge;
 
 @FunctionalInterface
 public interface Logger {

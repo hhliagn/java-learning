@@ -1,4 +1,4 @@
-package com.javalearning.demo.design_pattern.adapter.demo2;
+package com.javalearning.demo.design_pattern.adapter;
 
 public class LightningToMicroUsbAdapter implements MicroUsbPhone {
 

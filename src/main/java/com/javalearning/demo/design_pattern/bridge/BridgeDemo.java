@@ -1,7 +1,8 @@
-package com.javalearning.demo.design_pattern.bridge.demo2;
+package com.javalearning.demo.design_pattern.bridge;
 
 public class BridgeDemo {
 
+    // 抽象和实现分离，不绑定，可以自由替换
     public static void main(String[] args) {
 
         SimpleAccount simpleAccount = new SimpleAccount(100);
