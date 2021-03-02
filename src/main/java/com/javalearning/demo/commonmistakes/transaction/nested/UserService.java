@@ -26,11 +26,11 @@ public class UserService {
             log.error("create sub user error:{}", ex.getMessage());
         }
         //如果createSubUser是NESTED模式，这里抛出异常会导致嵌套事务无法『提交』
-        throw new RuntimeException("create main user error");
+        throw new RuntimeException("create compnay user error");
     }
 
     private void createMainUser(String name) {
-        userDataMapper.insert(name, "main");
+        userDataMapper.insert(name, "compnay");
     }
 
 

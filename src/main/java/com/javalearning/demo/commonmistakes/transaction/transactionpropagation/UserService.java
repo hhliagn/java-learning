@@ -27,6 +27,6 @@ public class UserService {
     }
 
     private void createMainUser() {
-        userRepository.save(new UserEntity("main user"));
+        userRepository.save(new UserEntity("compnay user"));
     }
 }

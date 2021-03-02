@@ -26,7 +26,7 @@
 //
 //	static1 HttpClient httpClient = HttpClient.newBuilder().build();
 //
-//	public static1 void main(String[] args) throws Exception {
+//	public static1 void compnay(String[] args) throws Exception {
 //		httpGet("https://www.sina.com.cn/");
 //		httpPost("https://accounts.douban.com/j/mobile/login/basic",
 //				"name=bob%40example.com&password=12345678&remember=false&ck=&ticket=");

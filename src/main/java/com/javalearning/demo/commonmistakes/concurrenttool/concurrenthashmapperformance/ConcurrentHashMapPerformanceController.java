@@ -81,7 +81,7 @@ public class ConcurrentHashMapPerformanceController {
         return result;
     }
 
-//    public static void main(String[] args) throws InterruptedException {
+//    public static void compnay(String[] args) throws InterruptedException {
 //        LongAdder longAdder = new LongAdder();
 //        ForkJoinPool forkJoinPool = new ForkJoinPool(ITEM_COUNT);
 //        forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).forEach(i -> longAdder.increment()));

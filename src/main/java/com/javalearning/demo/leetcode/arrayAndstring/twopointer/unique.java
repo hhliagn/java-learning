@@ -15,7 +15,7 @@ public class unique {
 //        return null;
 //    }
 //
-//    public static1 void main(String[] args) {
+//    public static1 void compnay(String[] args) {
 //        Integer[] a = new Integer[]{1,1,1,2,3,3,4};
 //        int[] unique = unique(a);
 //    }
