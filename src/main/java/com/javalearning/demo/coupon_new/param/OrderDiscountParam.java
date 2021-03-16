@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,11 @@ public class OrderDiscountParam implements Order {
     private Integer provinceId;
     private List<Item> items;
     private boolean preview;
+
+    @Override
+    public List<OrderItem> getItems(){
+        return new ArrayList<>();
+    }
 
     @Data
     @JsonNaming

@@ -26,9 +26,7 @@ public class CouponFactory {
         UserDiscountCoupon res;
 
         if ("amount".equals(userCoupon.getDiscountType())) {
-
             res = new FixAmountDiscountCoupon(userCoupon);
-
         }
 
         return null;

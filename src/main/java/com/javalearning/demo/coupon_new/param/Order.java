@@ -24,6 +24,7 @@ public interface Order {
     }
 
     Integer getAmtLogistics();
+
     List<OrderItem> getItems ();
 
     interface OrderItem {
