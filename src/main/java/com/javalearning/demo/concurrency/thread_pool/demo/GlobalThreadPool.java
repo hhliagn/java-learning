@@ -1,4 +1,4 @@
-package com.javalearning.demo.concurrency.thread_pool.split_task;
+package com.javalearning.demo.concurrency.thread_pool.demo;
 
 import jodd.util.concurrent.ThreadFactoryBuilder;
 
