@@ -1,5 +1,6 @@
 package com.javalearning.demo.concurrency.thread_pool.split_task;
 
+import com.javalearning.demo.concurrency.thread_pool.demo.GlobalThreadPool;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
