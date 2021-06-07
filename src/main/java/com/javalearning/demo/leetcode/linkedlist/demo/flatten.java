@@ -26,7 +26,7 @@ public class flatten { //深度优先搜索 DFS
         pseudoHead.next.prev = null;
         return pseudoHead.next;
     }
-    /* return the tail of the flatten list */
+    /* return the tail of the flatten hash */
     public Node flattenDFS(Node prev, Node curr) {
         if (curr == null) return prev;
         curr.prev = prev;

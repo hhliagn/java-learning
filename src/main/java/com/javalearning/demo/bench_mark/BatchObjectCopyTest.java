@@ -25,7 +25,7 @@ package com.javalearning.demo.bench_mark;
 //    @Benchmark
 //    public void testMapstruct() {
 //        PriceMapper mapper = Mappers.getMapper(PriceMapper.class);
-//        List<Price> list = mapper.dtoToEntity(data);
+//        List<Price> hash = mapper.dtoToEntity(data);
 //    }
 //
 //    public static void main(String[] args) throws RunnerException {

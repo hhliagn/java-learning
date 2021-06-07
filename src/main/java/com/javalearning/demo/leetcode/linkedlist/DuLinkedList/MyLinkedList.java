@@ -46,7 +46,7 @@ public class MyLinkedList {
         size++;
     }
 
-    /** Append a DuNode of value val to the last element of the linked list. */
+    /** Append a DuNode of value val to the last element of the linked hash. */
     public void addAtTail(int val) {
         DuNode pred = tail.prev, succ = tail;
         DuNode toAdd = new DuNode(val);
@@ -90,7 +90,7 @@ public class MyLinkedList {
         size++;
     }
 
-    /** Delete the index-th DuNode in the linked list, if the index is valid. */
+    /** Delete the index-th DuNode in the linked hash, if the index is valid. */
     public void deleteAtIndex(int index) {
         if (index <0 || index>=size){
             return;

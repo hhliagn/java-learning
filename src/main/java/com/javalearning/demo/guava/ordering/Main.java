@@ -81,18 +81,18 @@ public class Main {
 //            }
 //        };
 //
-//        List<String> list = new ArrayList<>();
-//        list.add("a");
-//        list.add("bb");
-//        list.add(null);
-//        list.add("ccc");
-//        list.add("zz");
-//        list.add("y");
-//        System.out.println(list);
+//        List<String> hash = new ArrayList<>();
+//        hash.add("a");
+//        hash.add("bb");
+//        hash.add(null);
+//        hash.add("ccc");
+//        hash.add("zz");
+//        hash.add("y");
+//        System.out.println(hash);
 
 
-//        Collections.sort(list, ordering);
-//        System.out.println(list);
+//        Collections.sort(hash, ordering);
+//        System.out.println(hash);
 
 
 //        Comparator<String> comparator = new Comparator<String>() {
@@ -103,44 +103,44 @@ public class Main {
 //        };
 //
 //        Ordering<String> from = Ordering.from(comparator);
-//        Collections.sort(list, from);
-//        System.out.println(list);
+//        Collections.sort(hash, from);
+//        System.out.println(hash);
 
 
 //        Ordering<Comparable> natural = Ordering.natural();
-//        Collections.sort(list, natural);
-//        System.out.println(list);
+//        Collections.sort(hash, natural);
+//        System.out.println(hash);
 
 
 //        Ordering<Object> usingToString = Ordering.usingToString();
-//        Collections.sort(list, usingToString);
-//        System.out.println(list);
+//        Collections.sort(hash, usingToString);
+//        System.out.println(hash);
 
 
 //        Ordering<Comparable> reverse = Ordering.natural().reverse();
-//        Collections.sort(list, reverse);
-//        System.out.println(list);
+//        Collections.sort(hash, reverse);
+//        System.out.println(hash);
 
 
 //        Ordering<Comparable> nullsFirst = Ordering.natural().nullsFirst();
-//        Collections.sort(list, nullsFirst);
-//        System.out.println(list);
+//        Collections.sort(hash, nullsFirst);
+//        System.out.println(hash);
 
 
 //        Ordering<Comparable> nullLast = Ordering.natural().nullsLast();
-//        Collections.sort(list, nullLast);
-//        System.out.println(list);
+//        Collections.sort(hash, nullLast);
+//        System.out.println(hash);
 
 
         // NPE
 //        Ordering<Comparable> hasNull = Ordering.natural();
-//        Collections.sort(list, hasNull);
-//        System.out.println(list);
+//        Collections.sort(hash, hasNull);
+//        System.out.println(hash);
 
 
 //        Ordering<String> natural = Ordering.natural();
 //        Ordering<Iterable<String>> lexicographical = natural.lexicographical();
-//        Collections.sort(list, lexicographical);
-//        System.out.println(list);
+//        Collections.sort(hash, lexicographical);
+//        System.out.println(hash);
     }
 }

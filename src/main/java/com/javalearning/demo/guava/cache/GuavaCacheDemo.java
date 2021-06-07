@@ -54,7 +54,7 @@ public class GuavaCacheDemo {
         }
 
         //最后打印缓存的命中率等情况
-        System.out.println("cache stats:");
+        System.out.println("CACHE stats:");
         System.out.println(userCache.stats().toString());
     }
 }

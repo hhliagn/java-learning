@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class SpringRedisService {
 
     /**
-     * 查询加入 cache
+     * 查询加入 CACHE
      */
     @Cacheable(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")
     public String getData(Integer companyId, Integer orderId){
@@ -21,7 +21,7 @@ public class SpringRedisService {
     }
 
     /**
-     * 新增数据库 - 同时加入 cache
+     * 新增数据库 - 同时加入 CACHE
      */
     @CachePut(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")
     public void addData(Integer companyId, Integer orderId){
@@ -30,7 +30,7 @@ public class SpringRedisService {
 
 
     /**
-     * 删除数据库 - 同时删除 cache
+     * 删除数据库 - 同时删除 CACHE
      */
     // 第一种方式
     // bug here
@@ -40,7 +40,7 @@ public class SpringRedisService {
         log.info("DB deleteByPrimaryKey...");
     }
 
-    // 第二种方式: 批量删除多个 cache
+    // 第二种方式: 批量删除多个 CACHE
     @Caching(evict = {
             @CacheEvict(value = "order_info", allEntries = true)
     })

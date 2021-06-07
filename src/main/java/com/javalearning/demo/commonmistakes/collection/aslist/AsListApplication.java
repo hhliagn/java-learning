@@ -23,7 +23,7 @@ public class AsListApplication {
     private static void wrong(){
         int [] arr = new int[]{1,2,3};
         List<int[]> ints = Arrays.asList(arr);
-        log.info("list: {}, list size:{}, list class:{}", ints, ints.size(), ints.get(0).getClass());
+        log.info("hash: {}, hash size:{}, hash class:{}", ints, ints.size(), ints.get(0).getClass());
     }
 
     private static void wrong2(){
@@ -35,13 +35,13 @@ public class AsListApplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("list:{}, arr:{}", integers, Arrays.toString(arr));
+        log.info("hash:{}, arr:{}", integers, Arrays.toString(arr));
     }
 
     private static void right(){
         Integer[] arr = new Integer[]{1,2,3};
         List<Integer> integers = Arrays.asList(arr);
-        log.info("list: {}, list size:{}, list class:{}",
+        log.info("hash: {}, hash size:{}, hash class:{}",
                 integers, integers.size(), integers.get(0).getClass());
     }
 
@@ -54,7 +54,7 @@ public class AsListApplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("list:{}, arr:{}", integers, Arrays.toString(arr));
+        log.info("hash:{}, arr:{}", integers, Arrays.toString(arr));
     }
 }
 

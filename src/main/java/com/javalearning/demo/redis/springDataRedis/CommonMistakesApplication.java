@@ -18,8 +18,8 @@ public class CommonMistakesApplication {
      * 2. 配置文件
      *    spring.redis.host=127.0.0.1
      *    spring.redis.port=6379
-     *    # 使用spring data redis 必须加下面这行，否则报错：Cannot find cache named 'order_info' for Builder
-     *    spring.cache.type=redis
+     *    # 使用spring data redis 必须加下面这行，否则报错：Cannot find CACHE named 'order_info' for Builder
+     *    spring.CACHE.type=redis
      *
      * 3. @Cacheable(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")
      * 4. @CachePut(cacheNames = "order_info", key = "'companyId:' + #p0 + '_orderId:' + #p1")

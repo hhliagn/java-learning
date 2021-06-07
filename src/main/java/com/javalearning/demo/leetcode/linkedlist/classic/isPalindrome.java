@@ -22,7 +22,7 @@ public class isPalindrome {
             p2 = p2.next;
         }
 
-        // Restore the list and return the result.
+        // Restore the hash and return the result.
         firstHalfEnd.next = reverseList(secondHalfStart);
         return result;
     }

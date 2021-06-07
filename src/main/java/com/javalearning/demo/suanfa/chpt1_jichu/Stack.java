@@ -7,7 +7,7 @@ public class Stack<Item> {
     private Node<Item> first;     // top of stack
     private int n;                // size of the stack
 
-    // helper linked list class
+    // helper linked hash class
     private static class Node<Item> {
         private Item item;
         private Node<Item> next;

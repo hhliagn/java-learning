@@ -7,7 +7,7 @@ public class Queue<Item> {
     private Node<Item> last;     // end of queueandstack
     private int n;               // number of elements on queueandstack
 
-    // helper linked list class
+    // helper linked hash class
     private static class Node<Item> {
         private Item item;
         private Node<Item> next;
