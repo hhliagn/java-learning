@@ -10,12 +10,12 @@ public class demo3 {
         List<String> languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
 
         filter(languages, s -> s.startsWith("J"));
-        filter(languages, s -> s.startsWith("a"));
+        filter(languages, s -> s.startsWith("A"));
 
         System.out.println("==========================");
 
         filter_lambda(languages, s -> s.startsWith("J"));
-        filter_lambda(languages, s -> s.startsWith("a"));
+        filter_lambda(languages, s -> s.startsWith("A"));
     }
 
     public static void filter(List<String> names, Predicate<String> condition){

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class EchoClientHandler extends ChannelInboundHandlerAdapter {
     private final ByteBuf data;
     public EchoClientHandler(){
-        this.data = Unpooled.wrappedBuffer("I'm a echo client".getBytes());
+        this.data = Unpooled.wrappedBuffer("I'm A echo client".getBytes());
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

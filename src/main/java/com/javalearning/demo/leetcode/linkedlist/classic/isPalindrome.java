@@ -12,7 +12,7 @@ public class isPalindrome {
         ListNode firstHalfEnd = endOfFirstHalf(head);
         ListNode secondHalfStart = reverseList(firstHalfEnd.next);
 
-        // Check whether or not there is a palindrome.
+        // Check whether or not there is A palindrome.
         ListNode p1 = head;
         ListNode p2 = secondHalfStart;
         boolean result = true;

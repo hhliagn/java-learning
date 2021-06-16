@@ -10,7 +10,7 @@ public class Merge {
         sort(a, aux, 0, a.length-1);
     }
 
-    // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
+    // mergesort A[lo..hi] using auxiliary array aux[lo..hi]
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
         if (hi <= lo) return;
         int mid = lo + (hi - lo) / 2;
@@ -25,7 +25,7 @@ public class Merge {
             aux[k] = a[k];
         }
 
-        // merge back to a[]
+        // merge back to A[]
         int i = lo, j = mid+1;
         for (int k = lo; k <= hi; k++) {
             if      (i > mid)              a[k] = aux[j++];

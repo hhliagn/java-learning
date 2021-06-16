@@ -19,9 +19,9 @@ public class IntAndStringEqualController {
     public void stringcomare() {
         String a = "1";
         String b = "1";
-        log.info("\nString a = \"1\";\n" +
+        log.info("\nString A = \"1\";\n" +
                 "String b = \"1\";\n" +
-                "a == b ? {}", a == b); //true
+                "A == b ? {}", a == b); //true
 
         String c = new String("2");
         String d = new String("2");
@@ -59,9 +59,9 @@ public class IntAndStringEqualController {
 
         Integer a = 127; //Integer.valueOf(127)
         Integer b = 127; //Integer.valueOf(127)
-        log.info("\nInteger a = 127;\n" +
+        log.info("\nInteger A = 127;\n" +
                 "Integer b = 127;\n" +
-                "a == b ? {}", a == b);    // true
+                "A == b ? {}", a == b);    // true
 
         Integer c = 128; //Integer.valueOf(128)
         Integer d = 128; //Integer.valueOf(128)

@@ -11,7 +11,7 @@ public class Apply {
     }
 
     public static void main(String[] args) {
-        String s = "i am a hero";
+        String s = "i am A hero";
         process(new UpperProcessor(), s);
         process(new LowerProcessor(), s);
         process(new ArrayProcessor(), s);

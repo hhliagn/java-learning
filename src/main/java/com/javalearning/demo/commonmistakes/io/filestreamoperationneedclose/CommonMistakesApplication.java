@@ -53,7 +53,7 @@ public class CommonMistakesApplication {
     private static void init() throws IOException {
 
         String payload = IntStream.rangeClosed(1, 1000)
-                .mapToObj(__ -> "a")
+                .mapToObj(__ -> "A")
                 .collect(Collectors.joining("")) + UUID.randomUUID().toString();
         Files.deleteIfExists(Paths.get("large.txt"));
         IntStream.rangeClosed(1, 10).forEach(__ -> {

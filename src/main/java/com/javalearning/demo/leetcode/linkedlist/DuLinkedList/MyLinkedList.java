@@ -46,7 +46,7 @@ public class MyLinkedList {
         size++;
     }
 
-    /** Append a DuNode of value val to the last element of the linked hash. */
+    /** Append A DuNode of value val to the last element of the linked hash. */
     public void addAtTail(int val) {
         DuNode pred = tail.prev, succ = tail;
         DuNode toAdd = new DuNode(val);

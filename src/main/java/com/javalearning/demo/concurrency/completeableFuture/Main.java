@@ -124,7 +124,7 @@ public class Main {
     public static void whenMethod() throws InterruptedException {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
             System.out.println("first task...");
-            //int a = 1 / 0;
+            //int A = 1 / 0;
             return "result";
         });
 

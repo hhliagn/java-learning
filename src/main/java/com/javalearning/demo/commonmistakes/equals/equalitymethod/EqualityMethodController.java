@@ -17,37 +17,37 @@ public class EqualityMethodController {
 
     @GetMapping("/wrong")
     public void wrong(){
-        Point a = new Point(1, 2, "a");
+        Point a = new Point(1, 2, "A");
         Point b = new Point(1, 2, "b");
-        Point c = new Point(1, 2, "a");
-        log.info("a equals b {}", a.equals(b));
-        log.info("a equals c {}", a.equals(c));
+        Point c = new Point(1, 2, "A");
+        log.info("A equals b {}", a.equals(b));
+        log.info("A equals c {}", a.equals(c));
     }
 
     @GetMapping("/wrong2")
     public void wrong2(){
-        PointWrong a = new PointWrong(1,2,"a");
-        PointWrong b = new PointWrong(1,2,"a");
+        PointWrong a = new PointWrong(1,2,"A");
+        PointWrong b = new PointWrong(1,2,"A");
 
-        log.info("a equals b {}", a.equals(b));
+        log.info("A equals b {}", a.equals(b));
 
         Set<PointWrong> set = new HashSet<>();
         set.add(a);
 
-        log.info("set contains a {}", set.contains(b));
+        log.info("set contains A {}", set.contains(b));
     }
 
     @GetMapping("/right")
     public void right(){
-        PointRight a = new PointRight(1,2,"a");
-        PointRight b = new PointRight(1,2,"a");
+        PointRight a = new PointRight(1,2,"A");
+        PointRight b = new PointRight(1,2,"A");
 
-        log.info("a equals b {}", a.equals(b));
+        log.info("A equals b {}", a.equals(b));
 
         Set<PointRight> set = new HashSet<>();
         set.add(a);
 
-        log.info("set contains a {}", set.contains(b));
+        log.info("set contains A {}", set.contains(b));
     }
 
     @AllArgsConstructor

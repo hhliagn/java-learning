@@ -36,7 +36,7 @@ public class ThreadPoolOOMController {
         printStats(threadPoolExecutor);
         for (int i = 0; i < 100000000; i++) {
             threadPoolExecutor.execute(() -> {
-                String payload = IntStream.rangeClosed(1, 100000).mapToObj(__ -> "a").collect(Collectors.joining(",")) + UUID.randomUUID().toString();
+                String payload = IntStream.rangeClosed(1, 100000).mapToObj(__ -> "A").collect(Collectors.joining(",")) + UUID.randomUUID().toString();
                 try {
                     TimeUnit.HOURS.sleep(1);
                 } catch (InterruptedException e) {
@@ -56,7 +56,7 @@ public class ThreadPoolOOMController {
         printStats(threadPoolExecutor);
         for (int i = 0; i < 100000000; i++) {
             threadPoolExecutor.execute(() -> {
-                String payload = IntStream.rangeClosed(1, 100000).mapToObj(__ -> "a").collect(Collectors.joining(",")) + UUID.randomUUID().toString();
+                String payload = IntStream.rangeClosed(1, 100000).mapToObj(__ -> "A").collect(Collectors.joining(",")) + UUID.randomUUID().toString();
                 try {
                     TimeUnit.HOURS.sleep(1);
                 } catch (InterruptedException e) {

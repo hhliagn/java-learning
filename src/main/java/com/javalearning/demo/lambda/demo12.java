@@ -7,7 +7,7 @@ public class demo12 {
      * @return
      */
     public static Runnable getRunnable(){
-        Runnable runnable = () -> System.out.println("this is a runnable interface");
+        Runnable runnable = () -> System.out.println("this is A runnable interface");
         return runnable;
     }
 

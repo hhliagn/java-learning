@@ -72,7 +72,7 @@ public class findDiagonalOrder {
         int M = matrix[0].length;
 
         // Incides that will help us progress through
-        // the matrix, one element at a time.
+        // the matrix, one element at A time.
         int row = 0, column = 0;
 
         // As explained in the article, this is the variable
@@ -116,7 +116,7 @@ public class findDiagonalOrder {
 
                 } else {
 
-                    // For a downwards going diagonal having [i, j] as its tail
+                    // For A downwards going diagonal having [i, j] as its tail
                     // if [i + 1, j] is within bounds, then it becomes
                     // the next head. Otherwise, the element directly below
                     // i.e. the element [i, j + 1] becomes the next head

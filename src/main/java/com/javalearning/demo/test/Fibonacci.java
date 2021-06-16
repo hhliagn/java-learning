@@ -16,7 +16,7 @@ public class Fibonacci {
         }
         int k = 0;
         //在第47个数的时候会突破int的范围
-//        for (int i : a) {
+//        for (int i : A) {
 //            System.out.print(i + "-" + ++k + " ");
 //        }
         System.out.println(Arrays.toString(a));

@@ -18,7 +18,7 @@ public class Interesting {
     public void compare(){
         for (int i = 0; i < 100000; i++) {
             if (a < b){
-                log.info("a:{} b:{} a > b?: {}", a, b, a > b);
+                log.info("A:{} b:{} A > b?: {}", a, b, a > b);
             }
         }
     }
@@ -26,7 +26,7 @@ public class Interesting {
     public synchronized void compareRight(){
         for (int i = 0; i < 100000; i++) {
             if (a < b){
-                log.info("a:{} b:{} a > b?: {}", a, b, a > b);
+                log.info("A:{} b:{} A > b?: {}", a, b, a > b);
             }
         }
     }

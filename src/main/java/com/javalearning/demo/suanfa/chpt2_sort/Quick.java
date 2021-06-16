@@ -10,7 +10,7 @@ public class Quick {
         sort(a, 0, a.length - 1);
     }
 
-    // quicksort the subarray from a[lo] to a[hi]
+    // quicksort the subarray from A[lo] to A[hi]
     private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
         int j = partition(a, lo, hi);
@@ -18,7 +18,7 @@ public class Quick {
         sort(a, j+1, hi);
     }
 
-    // partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
+    // partition the subarray A[lo..hi] so that A[lo..j-1] <= A[j] <= A[j+1..hi]
     // and return the index j.
     private static int partition(Comparable[] a, int lo, int hi) {
         int i = lo;
@@ -33,7 +33,7 @@ public class Quick {
 
             // find item on hi to swap
             while (less(v, a[--j])) {
-                if (j == lo) break;      // redundant since a[lo] acts as sentinel
+                if (j == lo) break;      // redundant since A[lo] acts as sentinel
             }
 
             // check if pointers cross
@@ -42,10 +42,10 @@ public class Quick {
             exch(a, i, j);
         }
 
-        // put partitioning item v at a[j]
+        // put partitioning item v at A[j]
         exch(a, lo, j);
 
-        // now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
+        // now, A[lo .. j-1] <= A[j] <= A[j+1 .. hi]
         return j;
     }
 
@@ -55,7 +55,7 @@ public class Quick {
         return v.compareTo(w) < 0;
     }
 
-    // exchange a[i] and a[j]
+    // exchange A[i] and A[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];

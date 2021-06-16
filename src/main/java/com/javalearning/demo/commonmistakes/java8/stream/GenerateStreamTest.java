@@ -19,16 +19,16 @@ public class GenerateStreamTest {
     @Test
     public void stream(){
         int[] ints = {1, 2, 3};
-        Arrays.asList("a", "b", "c").stream().forEach(System.out::println);
+        Arrays.asList("A", "b", "c").stream().forEach(System.out::println);
         Arrays.stream(ints).forEach(System.out::println);
     }
 
     @Test
     public void of(){
-        String[] arr = {"a","b","c"};
+        String[] arr = {"A","b","c"};
         Stream.of(arr).forEach(System.out::println);
-        Stream.of("a","b","c").forEach(System.out::println);
-        Stream.of(1, 2, "a").map(item -> (item.getClass().getName())).forEach(System.out::println);
+        Stream.of("A","b","c").forEach(System.out::println);
+        Stream.of(1, 2, "A").map(item -> (item.getClass().getName())).forEach(System.out::println);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class GenerateStreamTest {
         System.out.println(IntStream.of(1,2).asLongStream().toArray().getClass());
         System.out.println(IntStream.of(1,2).asDoubleStream().toArray().getClass());
 
-        Arrays.asList("a","b","c").stream()
+        Arrays.asList("A","b","c").stream()
                 .mapToInt(String::length)
                 .asLongStream()
                 .mapToDouble(i -> i/10.0)

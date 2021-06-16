@@ -40,7 +40,7 @@ public class reverseWords {
     }
 
     public static void main(String[] args) {
-        String s = reverseWords("a good   example");
+        String s = reverseWords("A good   example");
         System.out.println(s);
     }
 }

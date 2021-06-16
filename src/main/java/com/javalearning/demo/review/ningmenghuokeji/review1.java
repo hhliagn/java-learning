@@ -24,7 +24,7 @@ public class review1 {
     }
 
     public static void main(String[] args) {
-        String[] str1 = new String[]{"a","b","c","d","e"};
+        String[] str1 = new String[]{"A","b","c","d","e"};
         String[] str2 = new String[]{"c","f","e"};
         String[] jiaoji = jiaoji(str1, str2);
         System.out.println(Arrays.toString(jiaoji));

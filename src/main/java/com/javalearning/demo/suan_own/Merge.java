@@ -37,16 +37,16 @@ public class Merge {
         }
 
 //        for (int k = lo; k <= hi; k++) {
-//            aux[k] = a[k];
+//            aux[k] = A[k];
 //        }
 
-        // merge back to a[]
+        // merge back to A[]
 //        int i = lo, j = mid+1;
 //        for (int k = lo; k <= hi; k++) {
-//            if      (i > mid)              a[k] = aux[j++];
-//            else if (j > hi)               a[k] = aux[i++];
-//            else if (less(aux[j], aux[i])) a[k] = aux[j++];
-//            else                           a[k] = aux[i++];
+//            if      (i > mid)              A[k] = aux[j++];
+//            else if (j > hi)               A[k] = aux[i++];
+//            else if (less(aux[j], aux[i])) A[k] = aux[j++];
+//            else                           A[k] = aux[i++];
 //        }
     }
 

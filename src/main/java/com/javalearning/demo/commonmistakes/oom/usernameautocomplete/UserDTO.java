@@ -15,7 +15,7 @@ public class UserDTO {
     public UserDTO(String name) {
         this.name = name;
         this.payload = IntStream.rangeClosed(1, 10_000)
-                .mapToObj(__ -> "a")
+                .mapToObj(__ -> "A")
                 .collect(Collectors.joining(""));
     }
 }

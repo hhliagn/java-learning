@@ -25,7 +25,7 @@ public class ThreadPoolReuseController {
         IntStream.rangeClosed(1, 10).forEach(i -> {
             threadPool.execute(() -> {
                 String payload = IntStream.rangeClosed(1, 1000000)
-                        .mapToObj(__ -> "a")
+                        .mapToObj(__ -> "A")
                         .collect(Collectors.joining("")) + UUID.randomUUID().toString();
                 try {
                     TimeUnit.SECONDS.sleep(1);
@@ -43,7 +43,7 @@ public class ThreadPoolReuseController {
         IntStream.rangeClosed(1, 10).forEach(i -> {
             threadPool.execute(() -> {
                 String payload = IntStream.rangeClosed(1, 1000000)
-                        .mapToObj(__ -> "a")
+                        .mapToObj(__ -> "A")
                         .collect(Collectors.joining("")) + UUID.randomUUID().toString();
                 try {
                     TimeUnit.SECONDS.sleep(1);

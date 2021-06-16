@@ -46,7 +46,7 @@ public class LoggingController {
 
         long begin = System.currentTimeMillis();
 
-        String payload = IntStream.rangeClosed(1, 1000000).mapToObj(__-> "a").collect(Collectors.joining("")) + UUID.randomUUID().toString();
+        String payload = IntStream.rangeClosed(1, 1000000).mapToObj(__-> "A").collect(Collectors.joining("")) + UUID.randomUUID().toString();
 
         IntStream.rangeClosed(1, count).forEach(i -> log.info("{} {}", i, payload));
 

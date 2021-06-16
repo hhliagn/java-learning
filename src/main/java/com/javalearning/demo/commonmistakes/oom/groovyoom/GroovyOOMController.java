@@ -15,10 +15,10 @@ import java.util.stream.LongStream;
 @Slf4j
 public class GroovyOOMController {
 
-    public static final String SCRIPT_TEMPLATE = "a=%s + %s; return a;";
+    public static final String SCRIPT_TEMPLATE = "A=%s + %s; return A;";
     public static final ConcurrentHashMap<String, Script> SCRIPT_CACHE = new ConcurrentHashMap<>();
     public static final String SCRIPT_METHOD = "add";
-    public static final String SCRIPT_PERFECT = "def add(a,b){def c=a+b; return c;}";
+    public static final String SCRIPT_PERFECT = "def add(A,b){def c=A+b; return c;}";
     GroovyShell shell = new GroovyShell();
 
     @GetMapping("/wrong")

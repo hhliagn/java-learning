@@ -25,7 +25,7 @@ public class FanoutQueueRight {
 
     @GetMapping
     public void sendMessage(){
-        rabbitTemplate.convertAndSend(exchange, "", "this is a message!");
+        rabbitTemplate.convertAndSend(exchange, "", "this is A message!");
     }
 
     @Bean

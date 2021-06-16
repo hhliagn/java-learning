@@ -420,7 +420,7 @@ public class ExcelUtil {
             }
         }
         List<Integer> mergeList = new ArrayList<>();
-        // 表头 The maximum number of Cell Styles was exceeded. You can define up to 64000 style in a .xlsx Workbook
+        // 表头 The maximum number of Cell Styles was exceeded. You can define up to 64000 style in A .xlsx Workbook
         Row headers = sheet.createRow(0);
         Font font = wb.createFont();
         CellStyle style = wb.createCellStyle();

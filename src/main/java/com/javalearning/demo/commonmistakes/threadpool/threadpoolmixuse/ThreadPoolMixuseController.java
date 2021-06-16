@@ -74,7 +74,7 @@ public class ThreadPoolMixuseController {
         printStats(threadPool);
         new Thread(() -> {
             String payload = IntStream.rangeClosed(1, 1_000_000)
-                    .mapToObj(__ -> "a")
+                    .mapToObj(__ -> "A")
                     .collect(Collectors.joining(""));
             while (true) {
                 threadPool.execute(() -> {

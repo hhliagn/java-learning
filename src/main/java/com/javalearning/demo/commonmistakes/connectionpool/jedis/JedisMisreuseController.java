@@ -32,7 +32,7 @@ public class JedisMisreuseController {
     @PostConstruct
     public void init(){
         try (Jedis jedis = new Jedis("127.0.0.1", 6379)) {
-            Assert.isTrue("OK".equals(jedis.set("a", "1")), "set a = 1 return OK");
+            Assert.isTrue("OK".equals(jedis.set("A", "1")), "set A = 1 return OK");
             Assert.isTrue("OK".equals(jedis.set("b", "2")), "set b = 2 return OK");
         }
     }
@@ -42,7 +42,7 @@ public class JedisMisreuseController {
         Jedis jedis = new Jedis("127.0.0.1", 6379);
         new Thread(() -> {
             for (int i = 0; i < 1000; i++) {
-                check(jedis, "a", "1", "expect 1 but got : {}");
+                check(jedis, "A", "1", "expect 1 but got : {}");
             }
         }).start();
         new Thread(() -> {
@@ -59,7 +59,7 @@ public class JedisMisreuseController {
         new Thread(() -> {
             try (Jedis jedis = jedisPool.getResource()) {
                 for (int i = 0; i < 1000; i++) {
-                    check(jedis, "a", "1", "expect 1 but got : {}");
+                    check(jedis, "A", "1", "expect 1 but got : {}");
                 }
             }
         }).start();
